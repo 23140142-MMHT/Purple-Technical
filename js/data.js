@@ -14,8 +14,9 @@ window.BINDER = {
     game: "REBUILT",
     tagline: "Built to ride the surge.",
     location: "Ventura, CA",
-    primary: "#0066CC", // color principal
-    accent: "#00CCFF", // color de acento
+    // Paleta Aztech II — morado de marca. Solo negros, blancos y morados.
+    primary: "#8f00ff", // morado principal (firma del equipo)
+    accent: "#a361ff", // morado de acento (glow, bordes, links)
     youtubeId: "9VpVZiApRFw", // por si quieres un video en vez del 3D
     socials: {
       instagram: "https://instagram.com/team4414",

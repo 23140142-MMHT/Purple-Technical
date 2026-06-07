@@ -4,14 +4,16 @@
    así que para cambiar la paleta edita data.js (no hace falta tocar esto).
    ════════════════════════════════════════════════════════════════════════ */
 :root {
-  --bg: #060b14;
-  --surface: #0d1421;
-  --surface-2: #141e30;
-  --border: #1e293b;
-  --fg: #e2e8f0;
-  --muted: #94a3b8;
-  --primary: #0066cc; /* se sobreescribe desde data.js */
-  --accent: #00ccff; /* se sobreescribe desde data.js */
+  /* Paleta Aztech II: negros, blancos y morados (#8f00ff, #a361ff, #ca97ff, #f0e0ff). */
+  --bg: #0a0512;        /* casi negro con tinte morado */
+  --surface: #160a26;   /* morado muy oscuro */
+  --surface-2: #20103a; /* morado oscuro */
+  --border: #2e1a4d;    /* borde morado */
+  --fg: #f4ecff;        /* blanco lavanda */
+  --muted: #b9a3d6;     /* lavanda apagado (para texto secundario) */
+  --light: #f0e0ff;     /* lavanda claro (fondos de imágenes/render) */
+  --primary: #8f00ff;   /* se sobreescribe desde data.js */
+  --accent: #a361ff;    /* se sobreescribe desde data.js */
   --radius: 14px;
   --max: 1200px;
 }
@@ -21,7 +23,7 @@
 html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
 
 body {
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Poppins", system-ui, sans-serif;
   background: var(--bg);
   color: var(--fg);
   line-height: 1.6;
@@ -32,7 +34,7 @@ body {
   background-attachment: fixed;
 }
 
-h1, h2, h3, h4 { font-family: "Space Grotesk", system-ui, sans-serif; font-weight: 700; letter-spacing: -0.02em; }
+h1, h2, h3, h4 { font-family: "Montserrat", system-ui, sans-serif; font-weight: 700; letter-spacing: -0.02em; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 
@@ -92,7 +94,7 @@ img { max-width: 100%; display: block; }
 .hero-3d {
   position: relative; aspect-ratio: 16 / 10; width: 100%;
   border: 1px solid var(--border); border-radius: var(--radius);
-  background: #f4f3ee; overflow: hidden; cursor: pointer; padding: 0;
+  background: var(--light); overflow: hidden; cursor: pointer; padding: 0;
   box-shadow: 0 0 40px -10px color-mix(in srgb, var(--accent) 45%, transparent);
 }
 .hero-3d canvas { display: block; }
@@ -101,7 +103,7 @@ img { max-width: 100%; display: block; }
   background: rgba(0,0,0,.72); color: #fff; padding: 8px 16px; border-radius: 999px;
   font-size: 14px; font-weight: 500; z-index: 2;
 }
-.hero-3d-placeholder { position: absolute; inset: 0; display: grid; place-items: center; color: #64748b; padding: 24px; text-align: center; font-size: 14px; }
+.hero-3d-placeholder { position: absolute; inset: 0; display: grid; place-items: center; color: #7a5bb0; padding: 24px; text-align: center; font-size: 14px; }
 
 /* ---- Índice Contents ---- */
 #contents { padding: 40px 24px; scroll-margin-top: 6rem; }
@@ -113,7 +115,7 @@ img { max-width: 100%; display: block; }
 .contents-row { display: flex; align-items: center; gap: 24px; padding: 16px 8px; border-bottom: 1px solid var(--border); transition: background .2s; }
 .contents-row:hover { background: color-mix(in srgb, var(--surface) 40%, transparent); }
 .contents-row .num { width: 26px; color: var(--muted); font-family: monospace; font-size: 14px; }
-.contents-row .title { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 18px; transition: color .2s; }
+.contents-row .title { font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 18px; transition: color .2s; }
 .contents-row:hover .title { color: var(--accent); }
 
 /* ---- Secciones (dos columnas) ---- */
@@ -121,10 +123,10 @@ img { max-width: 100%; display: block; }
 .section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; scroll-margin-top: 6rem; }
 .section .media {
   aspect-ratio: 4 / 3; border: 1px solid var(--border); border-radius: var(--radius);
-  background: #f4f3ee; overflow: hidden; position: relative;
+  background: var(--light); overflow: hidden; position: relative;
 }
 .section .media img { width: 100%; height: 100%; object-fit: contain; }
-.section .media .placeholder { position: absolute; inset: 0; display: grid; place-items: center; color: #94a3b8; font-size: 13px; text-align: center; padding: 20px; }
+.section .media .placeholder { position: absolute; inset: 0; display: grid; place-items: center; color: #7a5bb0; font-size: 13px; text-align: center; padding: 20px; }
 .section .eyebrow { color: var(--accent); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .15em; }
 .section h2 { font-size: clamp(32px, 4.5vw, 52px); margin: 10px 0; }
 .section .summary { color: var(--muted); font-size: 18px; }
