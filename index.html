@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Technical Binder</title>
   <meta name="description" content="Technical Binder del robot — versión HTML/CSS/JS." />
+  <!-- Favicon: el logo del jaguar (assets/logo.png) -->
+  <link rel="icon" href="assets/logo.png" />
 
   <!-- ════════════ CÓMO USAR ════════════
        1) Abre esta carpeta con "Live Server" de VS Code (o corre: npx serve)
@@ -44,11 +46,16 @@
   <!-- ░░░ NAVBAR ░░░ -->
   <header class="navbar" id="navbar">
     <div class="container nav-inner">
-      <a class="brand" href="#top" aria-label="Inicio">
-        <span class="brand-badge" id="brand-num">44</span>
-        <span class="brand-text">
-          <strong id="brand-team">Team 4414</strong>
-          <small id="brand-name">HighTide</small>
+      <a class="brand" href="#top" aria-label="Aztech II — inicio">
+        <!-- Logo del jaguar (assets/logo.png). Si falta, se oculta. -->
+        <img class="brand-logo" src="assets/logo.png" alt="" onerror="this.style.display='none'" />
+        <!-- Logo del nombre del equipo, blanco (assets/wordmark.png).
+             Si falta, muestra el texto de respaldo. -->
+        <img class="brand-wordmark" src="assets/wordmark.png" alt="Aztech II"
+          onerror="this.style.display='none'; this.parentElement.querySelector('.brand-text').style.display='flex'" />
+        <span class="brand-text" style="display:none">
+          <strong id="brand-team">Team</strong>
+          <small id="brand-name"></small>
         </span>
       </a>
       <nav class="nav-links" id="nav-links">
@@ -101,7 +108,9 @@
   <!-- ░░░ FOOTER ░░░ -->
   <footer class="footer">
     <div class="container footer-inner">
-      <div>
+      <div class="footer-brand">
+        <img class="footer-logo" src="assets/logo.png" alt="" onerror="this.style.display='none'" />
+        <img class="footer-wordmark" src="assets/wordmark.png" alt="Aztech II" onerror="this.style.display='none'" />
         <strong id="footer-team">Team 4414 HighTide</strong>
         <p id="footer-desc"></p>
       </div>

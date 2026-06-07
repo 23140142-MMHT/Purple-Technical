@@ -85,7 +85,13 @@ img { max-width: 100%; display: block; }
   backdrop-filter: blur(12px); border-bottom-color: var(--border);
 }
 .nav-inner { display: flex; align-items: center; gap: 16px; height: 64px; }
-.brand { display: flex; align-items: center; gap: 10px; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-logo { height: 40px; width: auto; }
+.brand-wordmark { height: 26px; width: auto; max-width: 180px; object-fit: contain; }
+.footer-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; max-width: 360px; }
+.footer-logo { height: 56px; width: auto; }
+.footer-wordmark { height: 30px; width: auto; max-width: 240px; object-fit: contain; }
+.footer-brand strong { font-size: 14px; }
 .brand-badge {
   width: 36px; height: 36px; display: grid; place-items: center;
   border-radius: 9px; font-weight: 700; color: #fff;

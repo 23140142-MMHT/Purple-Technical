@@ -12,9 +12,10 @@
 
   /* ---- 2) Rellena textos fijos (navbar, hero, footer) ---- */
   const $ = (id) => document.getElementById(id);
-  $("brand-num").textContent = String(T.number).slice(0, 2);
-  $("brand-team").textContent = "Team " + T.number;
-  $("brand-name").textContent = T.name;
+  // Setter seguro: no falla si el elemento no existe (ej. logo en imagen).
+  const setText = (id, txt) => { const el = $(id); if (el) el.textContent = txt; };
+  setText("brand-team", "Team " + T.number);
+  setText("brand-name", T.name);
   $("season-badge").textContent = T.season + " · " + T.game;
   $("hero-eyebrow").textContent = "Temporada " + T.season + " · " + T.game;
   $("hero-robot").textContent = T.robotName;
