@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Technical Binder</title>
+  <meta name="description" content="Technical Binder del robot — versión HTML/CSS/JS." />
+
+  <!-- ════════════ CÓMO USAR ════════════
+       1) Abre esta carpeta con "Live Server" de VS Code (o corre: npx serve)
+          ⚠️ No la abras con doble-click (file://): el modelo 3D necesita un servidor.
+       2) Edita js/data.js para poner tu equipo/subsistemas.
+       3) Pon tus imágenes en assets/ y tu modelo en assets/cad/robot.glb
+       ==================================== -->
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Comparador antes/después (web component, se auto-registra) -->
+  <script defer src="https://unpkg.com/img-comparison-slider@8/dist/index.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/img-comparison-slider@8/dist/styles.css" />
+
+  <!-- Lightbox para galería -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- three.js (modelo 3D) — importmap para resolver "three" y sus addons -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <!-- ░░░ NAVBAR ░░░ -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Inicio">
+        <span class="brand-badge" id="brand-num">44</span>
+        <span class="brand-text">
+          <strong id="brand-team">Team 4414</strong>
+          <small id="brand-name">HighTide</small>
+        </span>
+      </a>
+      <nav class="nav-links" id="nav-links">
+        <a href="#top">Robot</a>
+        <a href="#contents">Subsistemas</a>
+        <a href="#mexico-vs-niagara">Prototipos</a>
+        <a href="#software">Software</a>
+      </nav>
+      <span class="season-badge" id="season-badge">2026</span>
+      <button class="hamburger" id="hamburger" aria-label="Menú">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ░░░ HERO ░░░ -->
+    <section class="hero container" id="top">
+      <div class="hero-text">
+        <span class="badge" id="hero-eyebrow">Temporada 2026</span>
+        <h1>
+          <span class="hero-kicker">Conoce a</span>
+          <span class="gradient" id="hero-robot">RIPCURRENT</span>
+        </h1>
+        <p id="hero-tagline">Built to ride the surge.</p>
+        <div class="hero-cta">
+          <a class="btn btn-accent" href="#contents">Explorar subsistemas</a>
+          <a class="btn btn-outline" id="hero-yt" href="#" target="_blank" rel="noopener">Ver reveal ▶</a>
+        </div>
+      </div>
+
+      <!-- Contenedor del modelo 3D (cad.js monta el canvas aquí).
+           Click en él = scroll a #contents -->
+      <button class="hero-3d" id="hero-3d" aria-label="Explorar subsistemas">
+        <span class="hero-3d-hint">Click para explorar ↓</span>
+      </button>
+    </section>
+
+    <!-- ░░░ ÍNDICE "CONTENTS" (lo genera main.js) ░░░ -->
+    <section class="container" id="contents">
+      <div class="contents-head">
+        <h2>Contents</h2>
+        <span class="index-label">Index</span>
+      </div>
+      <div id="contents-list"></div>
+    </section>
+
+    <!-- ░░░ SECCIONES (las genera main.js) ░░░ -->
+    <div class="container sections" id="sections"></div>
+  </main>
+
+  <!-- ░░░ FOOTER ░░░ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong id="footer-team">Team 4414 HighTide</strong>
+        <p id="footer-desc"></p>
+      </div>
+      <div class="socials" id="footer-socials"></div>
+    </div>
+    <div class="container footer-bottom" id="footer-bottom"></div>
+  </footer>
+
+  <!-- ░░░ CHAT (FAB + drawer) ░░░ -->
+  <button class="chat-fab" id="chat-fab" aria-label="Abrir asistente">🤖</button>
+  <aside class="chat-drawer" id="chat-drawer" aria-hidden="true">
+    <div class="chat-header">
+      <strong id="chat-title">Asistente</strong>
+      <button id="chat-close" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <form class="chat-input" id="chat-form">
+      <input id="chat-text" placeholder="Pregunta sobre el robot…" autocomplete="off" />
+      <button type="submit" aria-label="Enviar">➤</button>
+    </form>
+  </aside>
+
+  <!-- ░░░ LIBRERÍAS + SCRIPTS PROPIOS ░░░ -->
+  <!-- Iconos Lucide (UMD global) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <!-- Mermaid (diagramas) UMD global -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <!-- Lightbox -->
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+  <!-- Datos + lógica (clásicos: comparten scope global) -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/chat.js"></script>
+  <!-- Visor 3D (módulo: usa three.js) -->
+  <script type="module" src="js/cad.js"></script>
+</body>
+</html>
