@@ -1,0 +1,12 @@
+# Trata estos como binarios: git nunca debe convertir saltos de línea en ellos
+# (eso corrompería fuentes e imágenes).
+*.otf  binary
+*.ttf  binary
+*.woff binary
+*.woff2 binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.glb  binary
+*.gltf binary

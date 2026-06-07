@@ -8,11 +8,9 @@
    El navegador toma el primero que exista; deja solo el formato que tengas. */
 @font-face {
   font-family: "Conthrax";
-  src:
-    url("../assets/fonts/conthrax-semibold.woff2") format("woff2"),
-    url("../assets/fonts/conthrax-semibold.woff") format("woff"),
-    url("../assets/fonts/conthrax-semibold.ttf") format("truetype"),
-    url("../assets/fonts/conthrax-semibold.otf") format("opentype");
+  /* Apunta solo al .otf que existe (evita que Safari falle al buscar formatos
+     inexistentes). Si algún día agregas .woff2, ponlo ANTES de este. */
+  src: url("../assets/fonts/conthrax-semibold.otf") format("opentype");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
