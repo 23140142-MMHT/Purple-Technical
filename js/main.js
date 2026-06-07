@@ -14,16 +14,17 @@
   const $ = (id) => document.getElementById(id);
   // Setter seguro: no falla si el elemento no existe (ej. logo en imagen).
   const setText = (id, txt) => { const el = $(id); if (el) el.textContent = txt; };
-  setText("brand-team", "Team " + T.number);
-  setText("brand-name", T.name);
+  // Texto de respaldo del logo (solo se ve si falta wordmark.png): el nombre del equipo.
+  setText("brand-team", T.name);
+  setText("brand-name", "");
   $("season-badge").textContent = T.season + " · " + T.game;
   $("hero-eyebrow").textContent = "Temporada " + T.season + " · " + T.game;
   $("hero-robot").textContent = T.robotName;
   $("hero-tagline").textContent = T.tagline;
   $("hero-yt").href = "https://www.youtube.com/watch?v=" + T.youtubeId;
-  document.title = "Team " + T.number + " " + T.name + " — Technical Binder";
+  document.title = T.name + " — Technical Binder";
 
-  $("footer-team").textContent = "Team " + T.number + " " + T.name;
+  $("footer-team").textContent = T.name;
   $("footer-desc").textContent =
     "Technical Binder de " + T.robotName + " — temporada " + T.season +
     " (" + T.game + "). " + T.location + ".";
@@ -35,7 +36,7 @@
     .map(([k, url]) => `<a href="${url}" target="_blank" rel="noopener" aria-label="${k}">${socialMap[k] || "↗"}</a>`)
     .join("");
   $("footer-bottom").textContent =
-    "© " + T.season + " Team " + T.number + " " + T.name + ". Hecho con FIRST ♥.";
+    "© " + T.season + " " + T.name + ". Hecho con FIRST ♥.";
 
   /* ---- 3) Helpers de render ---- */
   // Imagen con fallback a placeholder si el archivo no existe.

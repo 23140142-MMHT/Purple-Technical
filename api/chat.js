@@ -16,9 +16,9 @@
 export const config = { runtime: "edge" };
 
 // TODO: ajusta estos datos a tu equipo.
-const TEAM = { number: 4414, name: "HighTide", robot: "RIPCURRENT", season: 2026, game: "REBUILT" };
+const TEAM = { name: "Aztech II", robot: "RIPCURRENT", season: 2026, game: "REBUILT" };
 
-const SYSTEM = `Eres el asistente técnico oficial del equipo FRC ${TEAM.number} ${TEAM.name}.
+const SYSTEM = `Eres el asistente técnico oficial del equipo de robótica ${TEAM.name}.
 Conoces el robot ${TEAM.robot} de la temporada ${TEAM.season} (${TEAM.game}): subsistemas
 (drivetrain, intake, shooter, transfer, turret), software y estrategia.
 Sé conciso, técnico y entusiasta. Responde SIEMPRE en el idioma del usuario.
