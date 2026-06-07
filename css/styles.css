@@ -3,6 +3,21 @@
    Los colores de marca se inyectan desde js/main.js usando js/data.js,
    así que para cambiar la paleta edita data.js (no hace falta tocar esto).
    ════════════════════════════════════════════════════════════════════════ */
+/* ---- Fuente local Conthrax SemiBold (títulos) ----
+   Sube tu archivo a:  assets/fonts/conthrax-semibold.(woff2|woff|ttf|otf)
+   El navegador toma el primero que exista; deja solo el formato que tengas. */
+@font-face {
+  font-family: "Conthrax";
+  src:
+    url("../assets/fonts/conthrax-semibold.woff2") format("woff2"),
+    url("../assets/fonts/conthrax-semibold.woff") format("woff"),
+    url("../assets/fonts/conthrax-semibold.ttf") format("truetype"),
+    url("../assets/fonts/conthrax-semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Paleta Aztech II: negros, blancos y morados (#8f00ff, #a361ff, #ca97ff, #f0e0ff). */
   --bg: #0a0512;        /* casi negro con tinte morado */
@@ -23,7 +38,7 @@
 html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
 
 body {
-  font-family: "Poppins", system-ui, sans-serif;
+  font-family: "Montserrat", system-ui, sans-serif;
   background: var(--bg);
   color: var(--fg);
   line-height: 1.6;
@@ -34,7 +49,8 @@ body {
   background-attachment: fixed;
 }
 
-h1, h2, h3, h4 { font-family: "Montserrat", system-ui, sans-serif; font-weight: 700; letter-spacing: -0.02em; }
+/* Títulos: Conthrax SemiBold (local); si no carga, cae a Montserrat. */
+h1, h2, h3, h4 { font-family: "Conthrax", "Montserrat", system-ui, sans-serif; font-weight: 600; letter-spacing: 0; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 
@@ -115,7 +131,7 @@ img { max-width: 100%; display: block; }
 .contents-row { display: flex; align-items: center; gap: 24px; padding: 16px 8px; border-bottom: 1px solid var(--border); transition: background .2s; }
 .contents-row:hover { background: color-mix(in srgb, var(--surface) 40%, transparent); }
 .contents-row .num { width: 26px; color: var(--muted); font-family: monospace; font-size: 14px; }
-.contents-row .title { font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 18px; transition: color .2s; }
+.contents-row .title { font-family: "Conthrax", "Montserrat", sans-serif; font-weight: 600; font-size: 18px; transition: color .2s; }
 .contents-row:hover .title { color: var(--accent); }
 
 /* ---- Secciones (dos columnas) ---- */
