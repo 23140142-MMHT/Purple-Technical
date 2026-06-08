@@ -86,17 +86,17 @@ window.BINDER = {
       id: "shooter",
       title: "Shooter",
       icon: "target",
-      summary: "Shooter de flywheel con velocidad ajustable, montado sobre el turret.",
+      summary: "Shooter de flywheel con velocidad ajustable, montado sobre el turret.", //RESUMEN DE TU MECANISMO
       image: "assets/subsystems/shooter.jpg",
       specs: [
-        { label: "Tipo", value: "Flywheel simple" },
-        { label: "Control", value: "Velocity PIDF" },
-        { label: "Rango", value: "1 - 4 m" },
+        { label: "Tipo", value: "Flywheel simple" },//dATO
+        { label: "Control", value: "Velocity PIDF" },//DATO
+        { label: "Rango", value: "1 - 4 m" },//DATO
       ],
       features: [
         {
-          text: "Flywheel con control de velocidad para tiros consistentes",
-          sub: ["Mantiene RPM objetivo antes de que el transfer alimente"],
+          text: "Flywheel con control de velocidad para tiros consistentes",//DATO IMPORTANTE
+          sub: ["Mantiene RPM objetivo antes de que el transfer alimente"],//DATO IMPORTANTE RELACIONADO ARRIBA
         },
         { text: "Montado sobre el turret para apuntar sin mover la base" },
         { text: "Velocidad por distancia (lookup table por visión)" },
