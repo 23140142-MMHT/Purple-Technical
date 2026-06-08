@@ -112,6 +112,8 @@ window.BINDER = {
       icon: "arrow-left-right",
       summary: "Indexa las piezas del intake al shooter de forma continua y controlada",
       image: "assets/subsystems/transfer.jpg",
+      model3d: "assets/cad/transfer.glb",
+      model3dRotation: { x: -90, y: 0, z: 0 },
       specs: [
         { label: "Tipo", value: "Banda + indexador" },
         { label: "Cola", value: "3 piezas" },
@@ -154,15 +156,15 @@ window.BINDER = {
     id: "software",
     title: "Software",
     summary:
-      "Autónomo, visión con AprilTags y app de scouting. El cerebro del auto-aim.",
+      "Autónomo, visión con AprilTags y app de scouting. El cerebro del auto-aim.", //RESUMEN DEL SOFTWARE
     image: "assets/software/scouting.png",
     features: [
       {
-        text: "Auto-aim del turret combinando AprilTags + odometría",
-        sub: ["El shooter se mantiene apuntado mientras el robot se mueve"],
+        text: "Auto-aim del turret combinando AprilTags + odometría", //DATO IMPORTANTE 1
+        sub: ["El shooter se mantiene apuntado mientras el robot se mueve"], //DATO RELACIONADO ARRIBA
       },
-      { text: "Rutas autónomas modulares seleccionables desde el dashboard" },
-      { text: "App de scouting offline-first para selección de alianzas" },
+      { text: "Rutas autónomas modulares seleccionables desde el dashboard" }, //DATO IMPORTANTE 2
+      { text: "App de scouting offline-first para selección de alianzas" }, //DATO RELACIONADO ARRIBA
     ],
   },
 
