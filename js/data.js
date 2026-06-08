@@ -88,7 +88,7 @@ window.BINDER = {
       id: "shooter",
       title: "Shooter",
       icon: "target",
-      summary: "Shooter de flywheel con velocidad ajustable, montado sobre el turret.", //RESUMEN DE TU MECANISMO
+      summary: "Shooter de doble motor y con un volante de inercia incorporado",
       image: "assets/subsystems/shooter.jpg",
       model3d: "assets/cad/shooter.glb",
       model3dRotation: { x: -90, y: 0, z: 0 },
@@ -99,18 +99,18 @@ window.BINDER = {
       ],
       features: [
         {
-          text: "Flywheel con control de velocidad para tiros consistentes",//DATO IMPORTANTE
-          sub: ["Mantiene RPM objetivo antes de que el transfer alimente"],//DATO IMPORTANTE RELACIONADO ARRIBA
+          text: "Flywheel con control de velocidad para tiros desde las dos zonas",
+          sub: ["Mantiene RPM objetivo antes de que el transfer alimente"],
         },
-        { text: "Montado sobre el turret para apuntar sin mover la base" },
-        { text: "Velocidad por distancia (lookup table por visión)" },
+        { text: "Doble motor para alcanzar las rpm que necesitamos sin saturar un solo motor" },
+        { text: "Montado sobre la torreta para el aimbot" },
       ],
     },
     {
       id: "transfer",
       title: "Transfer",
       icon: "arrow-left-right",
-      summary: "Indexa las piezas del intake al shooter de forma controlada.",
+      summary: "Indexa las piezas del intake al shooter de forma continua y controlada",
       image: "assets/subsystems/transfer.jpg",
       specs: [
         { label: "Tipo", value: "Banda + indexador" },
@@ -119,17 +119,17 @@ window.BINDER = {
       ],
       features: [
         {
-          text: "Desacopla la recolección del disparo para cadencia constante",
-          sub: ["Mantiene una cola de hasta 3 piezas lista"],
+          text: "Efectua la recolección gracias a una compresión adecuada",
+          sub: ["Mantiene una fila de 3 artifacts listos"],
         },
-        { text: "Dos beam breaks para contar piezas y evitar disparos en vacío" },
+        { text: "Gate con forma de cuchara para controlar el flujo de artifacts" },
       ],
     },
     {
       id: "turret",
       title: "Turret",
       icon: "crosshair",
-      summary: "Turret rotativo que mantiene el shooter apuntando al objetivo.",
+      summary: "Direct drive turret con auto aiming que apunta siempre al goal",
       image: "assets/subsystems/turret.jpg",
       model3d: "assets/cad/turret.glb",
       model3dRotation: { x: -90, y: 0, z: 0 },
@@ -141,10 +141,10 @@ window.BINDER = {
       features: [
         {
           text: "Mantiene el shooter apuntado aunque el robot se mueva",
-          sub: ["El piloto solo conduce; el turret apunta solo"],
+          sub: ["El driver solo conduce el drivetrain, la torreta apunta sola"],
         },
         { text: "Auto-aim con AprilTags + odometría" },
-        { text: "Encoder absoluto: sin homing al inicio del partido" },
+        { text: "Engranes helicoidales de doble hélice para evitar backlash" },
       ],
     },
   ],
