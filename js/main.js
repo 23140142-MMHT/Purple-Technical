@@ -133,7 +133,40 @@
     features: soft.features, specs: null, detail: null,
   }));
 
+  // Un visor 3D suelto (por clase, sin id) para la comparativa.
+  function cadMountRaw(modelPath, rot) {
+    const r = rot || { x: 0, y: 0, z: 0 };
+    return `<div class="media cad-mount" data-model="${modelPath}"
+      data-rotx="${r.x || 0}" data-roty="${r.y || 0}" data-rotz="${r.z || 0}">
+      <span class="cad-hint">Arrastra para rotar</span>
+    </div>`;
+  }
+
   proto.forEach((p) => {
+    // Si la entrada tiene modelos 3D, mostramos DOS visores lado a lado.
+    if (p.beforeModel3d && p.afterModel3d) {
+      out.push(`<section class="section section--proto3d" id="${p.id}">
+        <div class="proto3d-head">
+          <span class="eyebrow">Prototipos · ${p.number}</span>
+          <h2>${p.title}.</h2>
+          <p class="summary">${p.summary}</p>
+        </div>
+        <div class="proto3d-grid">
+          <figure class="proto3d-item">
+            ${cadMountRaw(p.beforeModel3d, p.model3dRotation)}
+            <figcaption>${p.beforeLabel}</figcaption>
+          </figure>
+          <figure class="proto3d-item">
+            ${cadMountRaw(p.afterModel3d, p.model3dRotation)}
+            <figcaption>${p.afterLabel}</figcaption>
+          </figure>
+        </div>
+        ${featuresHtml(p.features)}
+      </section>`);
+      return;
+    }
+
+    // Si no, el slider de imágenes antes/después.
     const cmp = `<div class="media">
       <span class="cmp-tag left">${p.beforeLabel}</span>
       <span class="cmp-tag right">${p.afterLabel}</span>

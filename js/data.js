@@ -175,11 +175,15 @@ window.BINDER = {
       id: "mexico-vs-niagara",
       title: "Mexico Championship vs Niagara Premiere",
       summary:
-        "Cómo evolucionó el robot entre ambos eventos. Arrastra el control para comparar.",
+        "Cómo evolucionó el robot entre ambos eventos. Gira cada modelo 3D para compararlos.",
       beforeImage: "assets/prototyping/mexico.jpg",
       afterImage: "assets/prototyping/niagara.jpg",
       beforeLabel: "Mexico Championship",
       afterLabel: "Niagara Premiere",
+      // Modelos 3D de cada evento (si están, se muestran 2 visores en vez del slider).
+      beforeModel3d: "assets/cad/mexico.glb",
+      afterModel3d: "assets/cad/niagara.glb",
+      model3dRotation: { x: -90, y: 0, z: 0 },
       features: [
         {
           text: "Rediseño del transfer para eliminar atascos vistos en México",

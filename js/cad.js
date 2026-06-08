@@ -63,24 +63,31 @@ function createViewer(container) {
     controls.update();
   }
 
-  loader.load(
-    modelPath,
-    (gltf) => {
-      const model = gltf.scene;
-      model.rotation.set(rot.x, rot.y, rot.z);
-      scene.add(model);
-      model.updateMatrixWorld(true);
-      fitCameraToObject(model);
-    },
-    undefined,
-    () => {
-      const el = document.createElement("div");
-      el.className = "hero-3d-placeholder";
-      el.innerHTML =
-        "No se pudo cargar <code>" + modelPath + "</code>.<br>Revisa la ruta en data.js.";
-      container.appendChild(el);
-    }
-  );
+  // Carga diferida: el modelo se descarga la PRIMERA vez que el visor se acerca
+  // a la pantalla (lo dispara el IntersectionObserver de abajo).
+  let loaded = false;
+  function load() {
+    if (loaded) return;
+    loaded = true;
+    loader.load(
+      modelPath,
+      (gltf) => {
+        const model = gltf.scene;
+        model.rotation.set(rot.x, rot.y, rot.z);
+        scene.add(model);
+        model.updateMatrixWorld(true);
+        fitCameraToObject(model);
+      },
+      undefined,
+      () => {
+        const el = document.createElement("div");
+        el.className = "hero-3d-placeholder";
+        el.innerHTML =
+          "No se pudo cargar <code>" + modelPath + "</code>.<br>Revisa la ruta en data.js.";
+        container.appendChild(el);
+      }
+    );
+  }
 
   function resize() {
     const w = container.clientWidth || 1;
@@ -97,6 +104,7 @@ function createViewer(container) {
   return {
     container,
     visible: false,
+    load,
     render() {
       keyLight.position.copy(camera.position);
       controls.update();
@@ -114,10 +122,12 @@ if (viewers.length) {
     (entries) => {
       entries.forEach((e) => {
         const v = viewers.find((v) => v.container === e.target);
-        if (v) v.visible = e.isIntersecting;
+        if (!v) return;
+        v.visible = e.isIntersecting;
+        if (e.isIntersecting) v.load(); // descarga el modelo al acercarse
       });
     },
-    { threshold: 0.05 }
+    { threshold: 0.01, rootMargin: "300px" }
   );
   viewers.forEach((v) => io.observe(v.container));
 
