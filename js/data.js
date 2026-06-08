@@ -61,7 +61,7 @@ window.BINDER = {
       ],
     },
     {
-      id: "Pivot intake",
+      id: "intake",
       title: "Intake",
       icon: "download",
       summary: "Pivot intake de 3 fases con llantas mini mecanum, gecko y compliant.",
