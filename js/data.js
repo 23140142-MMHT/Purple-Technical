@@ -30,7 +30,7 @@ window.BINDER = {
   /* ---- Modelo 3D del hero ----
      .gltf: sube robot.gltf + su .bin + texturas a assets/cad/ (todos juntos).
      .glb : un solo archivo en assets/cad/robot.glb (cambia la ruta abajo). */
-  cadModelPath: "assets/cad/robot.gltf",
+  cadModelPath: "assets/cad/robot.glb",
 
   /* ---- Endpoint del chat (la función serverless). Cámbialo al desplegar. ----
      En local sin backend, el chat responde un mensaje de "no configurado". */
