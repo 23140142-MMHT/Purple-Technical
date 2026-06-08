@@ -17,7 +17,7 @@ window.BINDER = {
     // Paleta Aztech II — morado de marca. Solo negros, blancos y morados.
     primary: "#8f00ff", // morado principal (firma del equipo)
     accent: "#a361ff", // morado de acento (glow, bordes, links)
-    youtubeId: "9VpVZiApRFw", // por si quieres un video en vez del 3D
+    youtubeId: "QDia3e12czc", // ID del video de reveal (botón "Ver reveal")
     socials: {
       instagram: "https://www.instagram.com/aztech_2_17626/" ,
       website: "https://team4414.com",
