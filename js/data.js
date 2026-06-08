@@ -70,7 +70,7 @@ window.BINDER = {
       summary: "Pivot intake de 3 fases con llantas mini mecanum, gecko y compliant.",
       image: "assets/subsystems/intake.jpg",
       model3d: "assets/cad/intake.glb",
-      model3dRotation: { x: -90, y: 90, z: 0 },
+      model3dRotation: { x: 0, y: 90, z: 0 },
       specs: [
         { label: "Tipo", value: "Indexing Asimetrico" },
         { label: "Motor", value: "Rev HD Hex Motor" },
