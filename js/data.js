@@ -41,23 +41,23 @@ window.BINDER = {
       id: "drivetrain",
       title: "Drivetrain",
       icon: "cog",
-      summary: "Base mecanum de alta tracción con motores goBILDA Yellow Jacket.",
+      summary: "Chasis mecanum con transmision de movimiento por poleas y motores Yellow Jacket",
       image: "assets/subsystems/drivetrain.jpg",
       // Modelo 3D interactivo para ESTE subsistema (en vez de la imagen).
       // Borra esta línea si prefieres mostrar la imagen de arriba.
       model3d: "assets/cad/robot.glb",
       specs: [
-        { label: "Tipo", value: "Mecanum" },
+        { label: "Tipo", value: "Mecanum Custom" },
         { label: "Motores", value: "4x goBILDA 5203 (415 RPM)" },
         { label: "Odometría", value: "2 dead wheels + IMU" },
       ],
       features: [
         {
           text: "Drivetrain mecanum con transferencia de movimiento por poleas",
-          sub: ["Alinea el turret sin reorientar todo el robot"],
+          sub: ["Centro de gravedad bajo para mayor estabilidad"],
         },
-        { text: "Odometría con 2 dead wheels para localización en el auto" },
-        { text: "Chasis modular goBILDA para mantenimiento rápido en pits" },
+        { text: "Odometría con 2 dead wheels para localización en el mapa para la torreta" },
+        { text: "Chasis con transmision por poleas para mayor presicion" },
       ],
     },
     {
