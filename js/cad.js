@@ -6,6 +6,8 @@
    ════════════════════════════════════════════════════════════════════════ */
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+// Decoder para modelos comprimidos con meshopt (los que produce gltf-transform/gltfpack).
+import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
 
 const container = document.getElementById("hero-3d");
 const modelPath = (window.BINDER && window.BINDER.cadModelPath) || "assets/cad/robot.glb";
@@ -61,7 +63,9 @@ function fitCameraToObject(object) {
 }
 
 // --- Carga del modelo ---
-new GLTFLoader().load(
+const loader = new GLTFLoader();
+loader.setMeshoptDecoder(MeshoptDecoder); // soporta GLB comprimido con meshopt
+loader.load(
   modelPath,
   (gltf) => {
     pivot.add(gltf.scene);
