@@ -19,9 +19,7 @@ window.BINDER = {
     accent: "#a361ff", // morado de acento (glow, bordes, links)
     youtubeId: "9VpVZiApRFw", // por si quieres un video en vez del 3D
     socials: {
-      instagram: "https://instagram.com/team4414",
-      youtube: "https://youtube.com/@team4414",
-      github: "https://github.com/team4414",
+      instagram: "https://www.instagram.com/aztech_2_17626/" ,
       website: "https://team4414.com",
     },
   },
@@ -50,12 +48,12 @@ window.BINDER = {
       model3d: "assets/cad/robot.glb",
       specs: [
         { label: "Tipo", value: "Mecanum" },
-        { label: "Motores", value: "4x goBILDA 5203 (312 RPM)" },
+        { label: "Motores", value: "4x goBILDA 5203 (415 RPM)" },
         { label: "Odometría", value: "2 dead wheels + IMU" },
       ],
       features: [
         {
-          text: "Base mecanum para movilidad omnidireccional",
+          text: "Drivetrain mecanum con transferencia de movimiento por poleas",
           sub: ["Alinea el turret sin reorientar todo el robot"],
         },
         { text: "Odometría con 2 dead wheels para localización en el auto" },
