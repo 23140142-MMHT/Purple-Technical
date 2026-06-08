@@ -61,22 +61,22 @@ window.BINDER = {
       ],
     },
     {
-      id: "intake",
+      id: "Pivot intake",
       title: "Intake",
       icon: "download",
-      summary: "Intake de rodillos compliant que recoge piezas y las envía al transfer.",
+      summary: "Pivot intake de 3 fases con llantas mini mecanum, gecko y compliant.",
       image: "assets/subsystems/intake.jpg",
       specs: [
-        { label: "Tipo", value: "Rodillo over-the-bumper" },
-        { label: "Motor", value: "goBILDA 5203 (1150 RPM)" },
+        { label: "Tipo", value: "Indexing Asimetrico" },
+        { label: "Motor", value: "Rev HD Hex Motor" },
         { label: "Captura", value: "< 0.5s" },
       ],
       features: [
         {
-          text: "Rodillos compliant que recogen la pieza en cualquier orientación",
-          sub: ["Montaje over-the-bumper para máximo ancho de captura"],
+          text: "Llantas mini mecanum que redireccionan el artifact sin embudos",
+          sub: ["Espacio suficiente para solo manipular 3 artifacts"],
         },
-        { text: "Sensor de color/distancia para indexado automático" },
+        { text: "Solo permite el ingreso, no se escapan los artifacts" },
       ],
     },
     {
