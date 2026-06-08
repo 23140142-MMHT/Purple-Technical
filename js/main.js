@@ -50,12 +50,25 @@
     </div>`;
   }
 
+  // Botón de pantalla completa (esquina del visor 3D).
+  function fsButton() {
+    return `<button class="cad-fs" title="Pantalla completa" aria-label="Pantalla completa" onclick="toggleCadFullscreen(this)">⛶</button>`;
+  }
+  // Alterna pantalla completa del visor (con prefijo webkit para Safari).
+  window.toggleCadFullscreen = function (btn) {
+    const m = btn.closest(".cad-mount");
+    const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+    if (fsEl) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    else (m.requestFullscreen || m.webkitRequestFullscreen).call(m);
+  };
+
   // Contenedor del visor 3D (cad.js monta el canvas aquí). Interactivo: rotar/zoom.
   // La rotación de corrección (grados) viene de s.model3dRotation.
   function cadMount(s) {
     const r = s.model3dRotation || { x: 0, y: 0, z: 0 };
     return `<div class="media cad-mount" id="cad-${s.id}" data-model="${s.model3d}"
       data-rotx="${r.x || 0}" data-roty="${r.y || 0}" data-rotz="${r.z || 0}">
+      ${fsButton()}
       <span class="cad-hint">Arrastra para rotar · scroll para zoom</span>
     </div>`;
   }
@@ -138,6 +151,7 @@
     const r = rot || { x: 0, y: 0, z: 0 };
     return `<div class="media cad-mount" data-model="${modelPath}"
       data-rotx="${r.x || 0}" data-roty="${r.y || 0}" data-rotz="${r.z || 0}">
+      ${fsButton()}
       <span class="cad-hint">Arrastra para rotar</span>
     </div>`;
   }
