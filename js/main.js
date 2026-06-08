@@ -51,15 +51,18 @@
   }
 
   // Contenedor del visor 3D (cad.js monta el canvas aquí). Interactivo: rotar/zoom.
-  function cadMount(modelPath) {
-    return `<div class="media cad-mount" id="cad-mount" data-model="${modelPath}">
+  // La rotación de corrección (grados) viene de s.model3dRotation.
+  function cadMount(s) {
+    const r = s.model3dRotation || { x: 0, y: 0, z: 0 };
+    return `<div class="media cad-mount" id="cad-mount" data-model="${s.model3d}"
+      data-rotx="${r.x || 0}" data-roty="${r.y || 0}" data-rotz="${r.z || 0}">
       <span class="cad-hint">Arrastra para rotar · scroll para zoom</span>
     </div>`;
   }
 
   // Elige 3D si el subsistema tiene model3d; si no, la imagen.
   function mediaFor(s) {
-    return s.model3d ? cadMount(s.model3d) : media(s.image, s.title + " con bumper");
+    return s.model3d ? cadMount(s) : media(s.image, s.title + " con bumper");
   }
 
   function featuresHtml(features) {

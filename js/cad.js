@@ -20,6 +20,14 @@ if (container) {
     (window.BINDER && window.BINDER.cadModelPath) ||
     "assets/cad/robot.glb";
 
+  // Rotación de corrección (en grados, desde data.js → model3dRotation).
+  const deg2rad = (d) => ((Number(d) || 0) * Math.PI) / 180;
+  const rot = {
+    x: deg2rad(container.dataset.rotx),
+    y: deg2rad(container.dataset.roty),
+    z: deg2rad(container.dataset.rotz),
+  };
+
   function showPlaceholder(msg) {
     const el = document.createElement("div");
     el.className = "hero-3d-placeholder";
@@ -37,15 +45,14 @@ if (container) {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   container.appendChild(renderer.domElement);
 
-  // --- Luces (sin HDR externo, funciona offline) ---
-  scene.add(new THREE.AmbientLight(0xffffff, 0.8));
-  scene.add(new THREE.HemisphereLight(0xffffff, 0xcccccc, 0.5));
-  const dir = new THREE.DirectionalLight(0xffffff, 1.4);
-  dir.position.set(5, 8, 5);
-  scene.add(dir);
-  const dir2 = new THREE.DirectionalLight(0xffffff, 0.6);
-  dir2.position.set(-5, 3, -4);
-  scene.add(dir2);
+  // --- Luces: la luz "clave" SIEMPRE viene desde la cámara (de frente), así el
+  //     lado que ves queda iluminado y el de atrás en sombra. El relleno
+  //     ambiental es bajo para que la sombra se note (si lo quieres más oscuro
+  //     atrás, baja el 0.4; si quieres todo más claro, súbelo). ---
+  scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x6a5a86, 0.35));
+  const keyLight = new THREE.DirectionalLight(0xffffff, 1.7);
+  scene.add(keyLight); // su posición se actualiza en el loop (sigue a la cámara)
 
   // --- Controles: rotar / zoom / pan ---
   const controls = new OrbitControls(camera, renderer.domElement);
@@ -77,8 +84,11 @@ if (container) {
   loader.load(
     modelPath,
     (gltf) => {
-      scene.add(gltf.scene);
-      fitCameraToObject(gltf.scene);
+      const model = gltf.scene;
+      model.rotation.set(rot.x, rot.y, rot.z); // corrige orientación (ver data.js)
+      scene.add(model);
+      model.updateMatrixWorld(true);
+      fitCameraToObject(model);
     },
     undefined,
     () => {
@@ -104,6 +114,7 @@ if (container) {
   // --- Loop de animación ---
   function animate() {
     requestAnimationFrame(animate);
+    keyLight.position.copy(camera.position); // la luz clave siempre desde el punto de vista
     controls.update();
     renderer.render(scene, camera);
   }
