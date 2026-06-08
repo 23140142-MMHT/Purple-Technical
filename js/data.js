@@ -48,7 +48,7 @@ window.BINDER = {
       model3d: "assets/cad/robot.glb",
       // Corrige la orientación del modelo (en GRADOS). Si sale al revés/de lado,
       // ajusta estos valores: prueba x:180, x:-90, x:90 o z:180 hasta que quede.
-      model3dRotation: { x: 180, y: 0, z: 0 },
+      model3dRotation: { x: -90, y: 0, z: 0 },
       specs: [
         { label: "Tipo", value: "Mecanum Custom" },
         { label: "Motores", value: "4x goBILDA 5203 (415 RPM)" },
