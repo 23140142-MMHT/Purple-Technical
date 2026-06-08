@@ -7,10 +7,9 @@
 window.BINDER = {
   /* ---- Identidad del equipo ---- */
   team: {
-    // El número ya no se muestra (los logos son la identidad). Déjalo o bórralo.
-    number: null,
+    number: 17626,
     name: "Aztech II",
-    robotName: "RIPCURRENT",
+    robotName: "PURPLE SPIKE",
     season: 2026,
     game: "REBUILT",
     tagline: "Built to ride the surge.",
