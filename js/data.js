@@ -45,6 +45,9 @@ window.BINDER = {
       icon: "cog",
       summary: "Base mecanum de alta tracción con motores goBILDA Yellow Jacket.",
       image: "assets/subsystems/drivetrain.jpg",
+      // Modelo 3D interactivo para ESTE subsistema (en vez de la imagen).
+      // Borra esta línea si prefieres mostrar la imagen de arriba.
+      model3d: "assets/cad/robot.glb",
       specs: [
         { label: "Tipo", value: "Mecanum" },
         { label: "Motores", value: "4x goBILDA 5203 (312 RPM)" },

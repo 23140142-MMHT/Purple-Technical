@@ -50,6 +50,18 @@
     </div>`;
   }
 
+  // Contenedor del visor 3D (cad.js monta el canvas aquí). Interactivo: rotar/zoom.
+  function cadMount(modelPath) {
+    return `<div class="media cad-mount" id="cad-mount" data-model="${modelPath}">
+      <span class="cad-hint">Arrastra para rotar · scroll para zoom</span>
+    </div>`;
+  }
+
+  // Elige 3D si el subsistema tiene model3d; si no, la imagen.
+  function mediaFor(s) {
+    return s.model3d ? cadMount(s.model3d) : media(s.image, s.title + " con bumper");
+  }
+
   function featuresHtml(features) {
     if (!features || !features.length) return "";
     const items = features.map((f) => {
@@ -107,7 +119,7 @@
   mech.forEach((s) => {
     out.push(section({
       id: s.id, eyebrow: "Mecánico · " + s.number, title: s.title, summary: s.summary,
-      mediaHtml: media(s.image, s.title + " con bumper"),
+      mediaHtml: mediaFor(s),
       features: s.features, specs: s.specs, detail: null,
     }));
   });
