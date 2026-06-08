@@ -11,9 +11,9 @@ window.BINDER = {
     name: "Aztech II",
     robotName: "PURPLE SPIKE",
     season: 2026,
-    game: "REBUILT",
+    game: "DECODE",
     tagline: "Built to ride the surge.",
-    location: "Ventura, CA",
+    location: "CDMX,MX",
     // Paleta Aztech II — morado de marca. Solo negros, blancos y morados.
     primary: "#8f00ff", // morado principal (firma del equipo)
     accent: "#a361ff", // morado de acento (glow, bordes, links)
