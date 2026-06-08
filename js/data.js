@@ -69,6 +69,8 @@ window.BINDER = {
       icon: "download",
       summary: "Pivot intake de 3 fases con llantas mini mecanum, gecko y compliant.",
       image: "assets/subsystems/intake.jpg",
+      model3d: "assets/cad/intake.glb",
+      model3dRotation: { x: -90, y: 0, z: 0 },
       specs: [
         { label: "Tipo", value: "Indexing Asimetrico" },
         { label: "Motor", value: "Rev HD Hex Motor" },
@@ -88,6 +90,8 @@ window.BINDER = {
       icon: "target",
       summary: "Shooter de flywheel con velocidad ajustable, montado sobre el turret.", //RESUMEN DE TU MECANISMO
       image: "assets/subsystems/shooter.jpg",
+      model3d: "assets/cad/shooter.glb",
+      model3dRotation: { x: -90, y: 0, z: 0 },
       specs: [
         { label: "Tipo", value: "Flywheel simple" },//dATO
         { label: "Control", value: "Velocity PIDF" },//DATO
@@ -127,6 +131,8 @@ window.BINDER = {
       icon: "crosshair",
       summary: "Turret rotativo que mantiene el shooter apuntando al objetivo.",
       image: "assets/subsystems/turret.jpg",
+      model3d: "assets/cad/turret.glb",
+      model3dRotation: { x: -90, y: 0, z: 0 },
       specs: [
         { label: "Rango", value: "±150°" },
         { label: "Feedback", value: "Encoder absoluto" },

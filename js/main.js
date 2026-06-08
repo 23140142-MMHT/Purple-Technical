@@ -54,7 +54,7 @@
   // La rotación de corrección (grados) viene de s.model3dRotation.
   function cadMount(s) {
     const r = s.model3dRotation || { x: 0, y: 0, z: 0 };
-    return `<div class="media cad-mount" id="cad-mount" data-model="${s.model3d}"
+    return `<div class="media cad-mount" id="cad-${s.id}" data-model="${s.model3d}"
       data-rotx="${r.x || 0}" data-roty="${r.y || 0}" data-rotz="${r.z || 0}">
       <span class="cad-hint">Arrastra para rotar · scroll para zoom</span>
     </div>`;
