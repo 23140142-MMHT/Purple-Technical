@@ -176,23 +176,50 @@ window.BINDER = {
       title: "Our Robots",
       summary:
         "Las 3 versiones mas importantes de Purple Spike. Gira cada modelo 3D para compararlos.",
-      // Rotación de corrección aplicada a TODOS los modelos de abajo.
+      // Rotación de corrección aplicada a TODOS los modelos 3D.
       model3dRotation: { x: -90, y: 0, z: 0 },
-      // Lista de modelos 3D (agrega/quita libremente; se acomodan en cuadrícula).
-      models: [
-        { label: "Mexico Championship", model3d: "assets/cad/mexico.glb" },
-        { label: "Niagara Cup", model3d: "assets/cad/niagara.glb" },
-        // { label: "Otro CAD", model3d: "assets/cad/otro.glb" },
-      ],
-      // Recuadro extra al final con este título (ponlo en false para ocultarlo).
-      addSlot: "Regional Cuautitlan Izcalli",
-      features: [
+      // Cada versión: etiqueta, modelo 3D (o null = recuadro "próximamente"),
+      // y sus listas de strengths/weaknesses.
+      versions: [
         {
-          text: "Rediseño del transfer para eliminar atascos vistos en México",
-          sub: ["Cola de 2 → 3 piezas y guías 3D nuevas"],
+          label: "V1 | Cuautitlan Regional",
+          model3d: null, // sube assets/cad/cuautitlan.glb cuando lo tengas
+          strengths: [
+            "Consistently achieving a 6 artifact autonomous routine",
+            "Fast and reliable chassis",
+            "The intake absorbed artifacts smoothly and quickly",
+          ],
+          weaknesses: [
+            "Inefficient outtake design with inconsistent shots",
+            "No autonomous",
+            "PLA material failures in 3D-printed power transmission components, combined with frictional heat from the motors, compromised structural integrity",
+          ],
         },
-        { text: "Turret con encoder absoluto (antes relativo con homing)" },
-        { text: "Auto-aim afinado: +15% de precisión a media distancia" },
+        {
+          label: "V2 | Mexico Championship",
+          model3d: "assets/cad/mexico.glb",
+          strengths: [
+            "A robust parallel plate drivetrain driven by belts, featuring our in-house CNC-machined plates",
+            "First autonomous routine, scoring 9 game pieces",
+            "Improved consistency and implemented a PID controller for precise shooter speed regulation",
+          ],
+          weaknesses: ["Slow cycles", "Problems with intake and shooter compressions"],
+        },
+        {
+          label: "V3 | Now - Niagara Premier Event",
+          model3d: "assets/cad/niagara.glb",
+          strengths: [
+            "New intake that can take 3 at a time",
+            "New band chassis with a reduction to make it faster",
+            "Turret to optimize the cycles",
+            "2 motors in the shooter to make it more consistent",
+            "Intake optimization for gate cycling",
+          ],
+          weaknesses: [
+            "Loose plate tolerances for bearing press-fits",
+            "Friction overhead between outtake wheels and plates",
+          ],
+        },
       ],
     },
   ],

@@ -156,30 +156,37 @@
     </div>`;
   }
 
+  // Lista de strengths/weaknesses con su marca (✓ / ✕).
+  function swList(title, items, cls, mark) {
+    const lis = (items || []).map((t) => `<li><span class="sw-mark">${mark}</span>${t}</li>`).join("");
+    return `<div class="sw sw--${cls}"><h4>${title}</h4><ul>${lis}</ul></div>`;
+  }
+
   proto.forEach((p) => {
-    // Si la entrada tiene una lista de modelos 3D, los acomodamos en cuadrícula 2×2:
-    // celda de texto (título) + una celda por modelo + (opcional) hueco "otro CAD".
-    if (p.models && p.models.length) {
-      const textCell = `<div class="proto3d-text">
-        <span class="eyebrow">Prototipos · ${p.number}</span>
-        <h2>${p.title}.</h2>
-        <p class="summary">${p.summary}</p>
-      </div>`;
-      const modelCells = p.models.map((m) => `<figure class="proto3d-item">
-        ${cadMountRaw(m.model3d, p.model3dRotation)}
-        <figcaption>${m.label}</figcaption>
-      </figure>`).join("");
-      const addLabel = typeof p.addSlot === "string" ? p.addSlot : "Espacio para otro CAD";
-      const addCell = p.addSlot
-        ? `<div class="proto3d-add"><span class="proto3d-add-plus">＋</span><span>${addLabel}</span></div>`
-        : "";
+    // Cada versión: fila con [ CAD (o recuadro vacío) | Strengths | Weaknesses ].
+    if (p.versions && p.versions.length) {
+      const rows = p.versions.map((v) => {
+        const left = v.model3d
+          ? cadMountRaw(v.model3d, p.model3dRotation)
+          : `<div class="media pv-empty"><span class="proto3d-add-plus">＋</span><span>CAD próximamente</span></div>`;
+        return `<div class="pv-row">
+          <div class="pv-left">
+            <span class="pv-badge">${v.label}</span>
+            ${left}
+          </div>
+          <div class="pv-info">
+            ${swList("Strengths", v.strengths, "good", "✓")}
+            ${swList("Weaknesses", v.weaknesses, "bad", "✕")}
+          </div>
+        </div>`;
+      }).join("");
       out.push(`<section class="section section--proto3d" id="${p.id}">
-        <div class="proto3d-grid">
-          ${textCell}
-          ${modelCells}
-          ${addCell}
+        <div class="proto3d-head" style="max-width:none">
+          <span class="eyebrow">Prototipos · ${p.number}</span>
+          <h2>${p.title}.</h2>
+          <p class="summary">${p.summary}</p>
         </div>
-        ${featuresHtml(p.features)}
+        <div class="pv-list">${rows}</div>
       </section>`);
       return;
     }
