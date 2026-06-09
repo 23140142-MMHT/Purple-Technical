@@ -108,6 +108,17 @@ img { max-width: 100%; display: block; }
 .lang-btn { background: none; border: none; color: var(--muted); font-size: 12px; font-weight: 700; padding: 6px 10px; cursor: pointer; transition: all .2s; line-height: 1; }
 .lang-btn:hover { color: var(--fg); }
 .lang-btn.active { background: var(--accent); color: #0a0512; }
+
+/* Botón "Conócenos" de la navbar (CTA al sitio web) */
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; border-radius: 999px;
+  font-size: 13px; font-weight: 700; color: #0a0512; white-space: nowrap; transition: all .2s;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+}
+.nav-cta::after { content: "→"; }
+.nav-cta:hover { filter: brightness(1.08); transform: translateY(-1px); box-shadow: 0 6px 20px -8px var(--accent); }
+@media (max-width: 860px) { .nav-cta { display: none; } }
+
 @media (max-width: 640px) {
   .season-badge { display: none; }
   .brand-wordmark { max-width: 120px; }

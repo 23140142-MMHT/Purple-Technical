@@ -51,6 +51,14 @@
       webEl.removeAttribute("href");
     }
   }
+
+  // Botón "Conócenos" de la navbar → sitio web (o Instagram si aún no hay sitio).
+  const navWeb = $("nav-website");
+  if (navWeb) {
+    const url = T.website || (T.socials && T.socials.instagram);
+    if (url) navWeb.href = url;
+    else navWeb.style.display = "none";
+  }
   $("footer-bottom").textContent =
     "© " + T.season + " " + T.name + ". " + tr("Hecho con FIRST ♥.");
 
