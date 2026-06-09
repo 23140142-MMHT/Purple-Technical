@@ -173,17 +173,19 @@ window.BINDER = {
   prototyping: [
     {
       id: "mexico-vs-niagara",
-      title: "Mexico Championship vs Niagara Premiere",
+      title: "Mexico Championship vs Niagara Cup",
       summary:
         "Cómo evolucionó el robot entre ambos eventos. Gira cada modelo 3D para compararlos.",
-      beforeImage: "assets/prototyping/mexico.jpg",
-      afterImage: "assets/prototyping/niagara.jpg",
-      beforeLabel: "Mexico Championship",
-      afterLabel: "Niagara Premiere",
-      // Modelos 3D de cada evento (si están, se muestran 2 visores en vez del slider).
-      beforeModel3d: "assets/cad/mexico.glb",
-      afterModel3d: "assets/cad/niagara.glb",
+      // Rotación de corrección aplicada a TODOS los modelos de abajo.
       model3dRotation: { x: -90, y: 0, z: 0 },
+      // Lista de modelos 3D (agrega/quita libremente; se acomodan en cuadrícula).
+      models: [
+        { label: "Mexico Championship", model3d: "assets/cad/mexico.glb" },
+        { label: "Niagara Cup", model3d: "assets/cad/niagara.glb" },
+        // { label: "Otro CAD", model3d: "assets/cad/otro.glb" },
+      ],
+      // Muestra un recuadro "Espacio para otro CAD" al final (ponlo en false para ocultarlo).
+      addSlot: true,
       features: [
         {
           text: "Rediseño del transfer para eliminar atascos vistos en México",

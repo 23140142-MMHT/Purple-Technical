@@ -157,23 +157,26 @@
   }
 
   proto.forEach((p) => {
-    // Si la entrada tiene modelos 3D, mostramos DOS visores lado a lado.
-    if (p.beforeModel3d && p.afterModel3d) {
+    // Si la entrada tiene una lista de modelos 3D, los acomodamos en cuadrícula 2×2:
+    // celda de texto (título) + una celda por modelo + (opcional) hueco "otro CAD".
+    if (p.models && p.models.length) {
+      const textCell = `<div class="proto3d-text">
+        <span class="eyebrow">Prototipos · ${p.number}</span>
+        <h2>${p.title}.</h2>
+        <p class="summary">${p.summary}</p>
+      </div>`;
+      const modelCells = p.models.map((m) => `<figure class="proto3d-item">
+        ${cadMountRaw(m.model3d, p.model3dRotation)}
+        <figcaption>${m.label}</figcaption>
+      </figure>`).join("");
+      const addCell = p.addSlot
+        ? `<div class="proto3d-add"><span class="proto3d-add-plus">＋</span><span>Espacio para otro CAD</span></div>`
+        : "";
       out.push(`<section class="section section--proto3d" id="${p.id}">
-        <div class="proto3d-head">
-          <span class="eyebrow">Prototipos · ${p.number}</span>
-          <h2>${p.title}.</h2>
-          <p class="summary">${p.summary}</p>
-        </div>
         <div class="proto3d-grid">
-          <figure class="proto3d-item">
-            ${cadMountRaw(p.beforeModel3d, p.model3dRotation)}
-            <figcaption>${p.beforeLabel}</figcaption>
-          </figure>
-          <figure class="proto3d-item">
-            ${cadMountRaw(p.afterModel3d, p.model3dRotation)}
-            <figcaption>${p.afterLabel}</figcaption>
-          </figure>
+          ${textCell}
+          ${modelCells}
+          ${addCell}
         </div>
         ${featuresHtml(p.features)}
       </section>`);

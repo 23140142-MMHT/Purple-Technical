@@ -154,8 +154,22 @@ img { max-width: 100%; display: block; }
 /* La comparativa (resultado final) destaca: visores grandes y casi a todo el ancho */
 .section--proto3d { width: 100vw; margin-left: calc(50% - 50vw); padding: 0 24px; }
 .proto3d-head { margin-left: auto; margin-right: auto; }
-.proto3d-grid { max-width: 1500px; margin: 0 auto; }
-.proto3d-item .media { aspect-ratio: auto; height: min(68vh, 640px); }
+.proto3d-grid { max-width: 1400px; margin: 0 auto; gap: 32px; }
+.proto3d-item .media { aspect-ratio: auto; height: min(46vh, 440px); }
+
+/* Celda de texto (título de la comparativa) dentro de la cuadrícula */
+.proto3d-text { display: flex; flex-direction: column; justify-content: center; padding: 8px 4px; }
+.proto3d-text h2 { font-size: clamp(28px, 3.5vw, 44px); margin: 12px 0; }
+.proto3d-text .summary { color: var(--muted); font-size: 17px; }
+
+/* Hueco "Espacio para otro CAD" */
+.proto3d-add {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  height: min(46vh, 440px); border: 2px dashed var(--border); border-radius: var(--radius);
+  color: var(--muted); font-size: 15px; background: color-mix(in srgb, var(--surface) 35%, transparent);
+}
+.proto3d-add-plus { font-size: 34px; color: var(--accent); line-height: 1; }
+.proto3d-add:hover { border-color: var(--accent); }
 
 /* Botón de pantalla completa en cada visor 3D */
 .cad-fs {
