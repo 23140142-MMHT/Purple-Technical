@@ -59,10 +59,10 @@
         </span>
       </a>
       <nav class="nav-links" id="nav-links">
-        <a href="#top">Robot</a>
-        <a href="#contents">Subsistemas</a>
-        <a href="#mexico-vs-niagara">Prototipos</a>
-        <a href="#software">Software</a>
+        <a href="#top" data-i18n="Robot">Robot</a>
+        <a href="#contents" data-i18n="Subsistemas">Subsistemas</a>
+        <a href="#mexico-vs-niagara" data-i18n="Prototipos">Prototipos</a>
+        <a href="#software" data-i18n="Software">Software</a>
       </nav>
       <!-- Menú de idiomas (no se traduce a sí mismo) -->
       <div class="lang-menu notranslate" translate="no" aria-label="Idioma">
@@ -81,13 +81,13 @@
       <div class="hero-text">
         <span class="badge" id="hero-eyebrow">Temporada 2026</span>
         <h1>
-          <span class="hero-kicker">Conoce a</span>
+          <span class="hero-kicker" data-i18n="Conoce a">Conoce a</span>
           <span class="gradient notranslate" translate="no" id="hero-robot">PURPLE SPIKE</span>
         </h1>
         <p id="hero-tagline">Built to ride the surge.</p>
         <div class="hero-cta">
-          <a class="btn btn-accent" href="#contents">Explorar subsistemas</a>
-          <a class="btn btn-outline" id="hero-yt" href="#" target="_blank" rel="noopener">Ver reveal ▶</a>
+          <a class="btn btn-accent" href="#contents" data-i18n="Explorar subsistemas">Explorar subsistemas</a>
+          <a class="btn btn-outline" id="hero-yt" href="#" target="_blank" rel="noopener" data-i18n="Ver reveal ▶">Ver reveal ▶</a>
         </div>
       </div>
 
@@ -101,7 +101,7 @@
     <!-- ░░░ ÍNDICE "CONTENTS" (lo genera main.js) ░░░ -->
     <section class="container" id="contents">
       <div class="contents-head">
-        <h2>Contents</h2>
+        <h2 data-i18n="Contents">Contents</h2>
         <span class="index-label">Index</span>
       </div>
       <div id="contents-list"></div>
@@ -134,7 +134,7 @@
     </div>
     <div class="chat-messages" id="chat-messages"></div>
     <form class="chat-input" id="chat-form">
-      <input id="chat-text" placeholder="Pregunta sobre el robot…" autocomplete="off" />
+      <input id="chat-text" data-i18n-ph="Pregunta sobre el robot…" placeholder="Pregunta sobre el robot…" autocomplete="off" />
       <button type="submit" aria-label="Enviar">➤</button>
     </form>
   </aside>
@@ -147,16 +147,13 @@
   <!-- Lightbox -->
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 
+  <!-- i18n: debe cargar ANTES de data.js/main.js para que t()/tData() existan -->
+  <script src="js/translate.js"></script>
   <!-- Datos + lógica (clásicos: comparten scope global) -->
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
   <script src="js/chat.js"></script>
   <!-- Visor 3D (módulo: usa three.js) -->
   <script type="module" src="js/cad.js"></script>
-
-  <!-- Menú de idiomas (ES/EN/FR) vía Google Website Translator -->
-  <div id="google_translate_element"></div>
-  <script src="js/translate.js"></script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>

@@ -5,6 +5,7 @@
    ════════════════════════════════════════════════════════════════════════ */
 (function () {
   const B = window.BINDER;
+  const tr = window.t || function (s) { return s; };
   const endpoint = B.chatEndpoint || "/api/chat";
 
   const fab = document.getElementById("chat-fab");
@@ -18,9 +19,9 @@
   let busy = false;
 
   const SUGGESTIONS = [
-    "¿Qué tipo de drivetrain usan?",
-    "¿Cómo funciona el turret?",
-    "¿Cuál es su estrategia autónoma?",
+    tr("¿Qué tipo de drivetrain usan?"),
+    tr("¿Cómo funciona el turret?"),
+    tr("¿Cuál es su estrategia autónoma?"),
   ];
 
   function renderSuggestions() {
@@ -28,7 +29,7 @@
     const wrap = document.createElement("div");
     wrap.className = "chat-suggestions";
     wrap.innerHTML =
-      `<p style="color:var(--muted);font-size:14px">Pregúntame sobre ${B.team.robotName}:</p>` +
+      `<p style="color:var(--muted);font-size:14px">${tr("Pregúntame sobre")} ${B.team.robotName}:</p>` +
       SUGGESTIONS.map((q) => `<button type="button">${q}</button>`).join("");
     wrap.querySelectorAll("button").forEach((btn) =>
       btn.addEventListener("click", () => send(btn.textContent))
@@ -90,9 +91,9 @@
       }
       if (acc) history.push({ role: "assistant", content: acc });
     } catch (err) {
-      botEl.textContent =
-        "El asistente AI no está conectado. Despliega la función serverless " +
-        "(api/chat.js) con tu ANTHROPIC_API_KEY para activarlo.";
+      botEl.textContent = tr(
+        "El asistente AI no está conectado. Despliega la función serverless (api/chat.js) con tu ANTHROPIC_API_KEY para activarlo."
+      );
     } finally {
       busy = false;
     }
