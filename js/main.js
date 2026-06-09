@@ -163,31 +163,37 @@
   }
 
   proto.forEach((p) => {
-    // Cada versión: fila con [ CAD (o recuadro vacío) | Strengths | Weaknesses ].
+    // Mismo formato que los mecanismos: CAD a la izquierda, info a la derecha.
+    // "Our Robots" + su texto como cabecera que ocupa toda una fila arriba.
     if (p.versions && p.versions.length) {
-      const rows = p.versions.map((v) => {
-        const left = v.model3d
+      const versionSections = p.versions.map((v) => {
+        const media = v.model3d
           ? cadMountRaw(v.model3d, p.model3dRotation)
           : `<div class="media pv-empty"><span class="proto3d-add-plus">＋</span><span>CAD próximamente</span></div>`;
-        return `<div class="pv-row">
-          <div class="pv-left">
-            <span class="pv-badge">${v.label}</span>
-            ${left}
+        // Separa "V1 | Cuautitlan Regional" en eyebrow ("V1") + título ("Cuautitlan Regional").
+        const parts = v.label.split("|");
+        const vnum = parts.length > 1 ? parts[0].trim() : "";
+        const vname = parts.length > 1 ? parts.slice(1).join("|").trim() : v.label;
+        return `<section class="section version-row">
+          <div>${media}</div>
+          <div>
+            <span class="eyebrow">${vnum || "Versión"}</span>
+            <h2>${vname}.</h2>
+            <div class="pv-info-stack">
+              ${swList("Strengths", v.strengths, "good", "✓")}
+              ${swList("Weaknesses", v.weaknesses, "bad", "✕")}
+            </div>
           </div>
-          <div class="pv-info">
-            ${swList("Strengths", v.strengths, "good", "✓")}
-            ${swList("Weaknesses", v.weaknesses, "bad", "✕")}
-          </div>
-        </div>`;
+        </section>`;
       }).join("");
-      out.push(`<section class="section section--proto3d" id="${p.id}">
-        <div class="proto3d-head proto3d-head--full">
+      out.push(`<div class="section--proto" id="${p.id}">
+        <div class="proto-head-row">
           <span class="eyebrow">Prototipos · ${p.number}</span>
           <h2>${p.title}.</h2>
           <p class="summary">${p.summary}</p>
         </div>
-        <div class="pv-list">${rows}</div>
-      </section>`);
+        ${versionSections}
+      </div>`);
       return;
     }
 
