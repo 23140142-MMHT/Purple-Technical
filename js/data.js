@@ -93,9 +93,9 @@ window.BINDER = {
       model3d: "assets/cad/shooter.glb",
       model3dRotation: { x: -90, y: 0, z: 0 },
       specs: [
-        { label: "Tipo", value: "Flywheel simple" },//dATO
-        { label: "Control", value: "Velocity PIDF" },//DATO
-        { label: "Rango", value: "1 - 4 m" },//DATO
+        { label: "Tipo", value: "Doble flywheel" },
+        { label: "Control", value: "Velocity PIDF" },
+        { label: "Rango", value: "1 - 4 m" },
       ],
       features: [
         {
@@ -138,14 +138,14 @@ window.BINDER = {
       specs: [
         { label: "Rango", value: "±150°" },
         { label: "Feedback", value: "Encoder absoluto" },
-        { label: "Apuntado", value: "Auto-aim AprilTags" },
+        { label: "Apuntado", value: "Auto-aim por odometría" },
       ],
       features: [
         {
           text: "Mantiene el shooter apuntado aunque el robot se mueva",
           sub: ["El driver solo conduce el drivetrain, la torreta apunta sola"],
         },
-        { text: "Auto-aim con AprilTags + odometría" },
+        { text: "Auto-aim por odometría (Pinpoint + atan2 desde la pose)" },
         { text: "Engranes helicoidales de doble hélice para evitar backlash" },
       ],
     },
@@ -157,7 +157,7 @@ window.BINDER = {
     title: "Software",
     summary:
       "El cerebro de PURPLE SPIKE: odometría, auto-aim del turret, control de flywheel y máquinas de estado, todo programado con un LLM local como par-programador.",
-    image: "assets/software/scouting.png",
+    image: "assets/software/control.png",
     features: [
       {
         text: "Odometría Pinpoint + Pedro: conoce la pose (x, y, θ) y la velocidad del robot en el campo",
@@ -226,7 +226,7 @@ window.BINDER = {
           label: "V1 | Cuautitlan Regional",
           model3d: null, // sube assets/cad/cuautitlan.glb cuando lo tengas
           strengths: [
-            "Consistently achieving a 6 artifact autonomous routine",
+            "Consistently achieving a 6 artifact teleop routine",
             "Fast and reliable chassis",
             "The intake absorbed artifacts smoothly and quickly",
           ],

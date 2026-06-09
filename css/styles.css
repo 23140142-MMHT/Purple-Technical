@@ -136,6 +136,10 @@ img { max-width: 100%; display: block; }
   width: 100%; height: auto; max-height: 86vh; object-fit: contain;
 }
 
+/* Imagen plana: sin marco, fondo ni sombra (renders con fondo negro) */
+.plain-media { display: flex; align-items: center; justify-content: center; width: 100%; }
+.plain-media img { width: 100%; height: auto; max-height: 72vh; object-fit: contain; }
+
 /* Visor 3D embebido dentro de una sección (ej. Drivetrain) */
 .cad-mount { cursor: grab; }
 .cad-mount:active { cursor: grabbing; }

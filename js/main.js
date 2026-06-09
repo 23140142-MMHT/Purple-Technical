@@ -50,6 +50,11 @@
     </div>`;
   }
 
+  // Imagen plana: sin marco, sin fondo, sin sombra (para renders con fondo negro).
+  function plainMedia(src, alt) {
+    return `<div class="plain-media"><img src="${src}" alt="${alt}" loading="lazy" onerror="this.style.display='none'"></div>`;
+  }
+
   // Botón de pantalla completa (esquina del visor 3D).
   function fsButton() {
     return `<button class="cad-fs" title="Pantalla completa" aria-label="Pantalla completa" onclick="toggleCadFullscreen(this)">⛶</button>`;
@@ -142,7 +147,7 @@
 
   out.push(section({
     id: soft.id, eyebrow: "Software · " + soft.number, title: soft.title, summary: soft.summary,
-    mediaHtml: media(soft.image, "Software del robot"),
+    mediaHtml: plainMedia(soft.image, "Diagrama de control de PURPLE SPIKE"),
     features: soft.features, specs: null, detail: null,
   }));
 
