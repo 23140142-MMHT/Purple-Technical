@@ -37,6 +37,20 @@
   $("footer-socials").innerHTML = Object.entries(T.socials)
     .map(([k, url]) => `<a href="${url}" target="_blank" rel="noopener" aria-label="${k}">${socialMap[k] || "↗"}</a>`)
     .join("");
+
+  // Sitio web del equipo (footer). La URL viene de team.website en data.js.
+  const webEl = $("footer-website");
+  if (webEl) {
+    if (T.website) {
+      webEl.href = T.website;
+      webEl.textContent = "🌐 " + tr("Nuestro sitio web") + " →";
+    } else {
+      // Aún sin link: muestra un placeholder y queda no-clickeable.
+      webEl.textContent = "(" + tr("sitio web próximamente") + ")";
+      webEl.classList.add("disabled");
+      webEl.removeAttribute("href");
+    }
+  }
   $("footer-bottom").textContent =
     "© " + T.season + " " + T.name + ". " + tr("Hecho con FIRST ♥.");
 

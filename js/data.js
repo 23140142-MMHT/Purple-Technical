@@ -18,9 +18,16 @@ window.BINDER = {
     primary: "#8f00ff", // morado principal (firma del equipo)
     accent: "#a361ff", // morado de acento (glow, bordes, links)
     youtubeId: "QDia3e12czc", // ID del video de reveal (botón "Ver reveal")
+
+    // ══════════════════════════════════════════════════════════════════════
+    //  👉 SITIO WEB DEL EQUIPO — PEGA AQUÍ TU LINK (entre las comillas).
+    //     Ej:  website: "https://aztech17626.com"
+    //     Mientras esté vacío "", el footer muestra "(sitio web próximamente)".
+    // ══════════════════════════════════════════════════════════════════════
+    website: "",
+
     socials: {
-      instagram: "https://www.instagram.com/aztech_2_17626/" ,
-      website: "https://team4414.com",
+      instagram: "https://www.instagram.com/aztech_2_17626/",
     },
   },
 
