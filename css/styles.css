@@ -134,7 +134,6 @@ img { max-width: 100%; display: block; }
 .hero-image-wrap { display: flex; align-items: center; justify-content: center; width: 100%; }
 .hero-image {
   width: 100%; height: auto; max-height: 76vh; object-fit: contain;
-  border-radius: 16px; box-shadow: 0 0 70px -12px rgba(143, 0, 255, 0.5);
 }
 
 /* Visor 3D embebido dentro de una sección (ej. Drivetrain) */
