@@ -20,6 +20,9 @@
       // —— UI ——
       "Conoce a": "Meet",
       "Explorar subsistemas": "Explore subsystems",
+      "Explorar": "Explore",
+      "Conéctate": "Connect",
+      "Volver arriba ↑": "Back to top ↑",
       "Ver reveal ▶": "Watch reveal ▶",
       "Subsistemas": "Subsystems",
       "Prototipos": "Prototypes",
@@ -176,6 +179,9 @@
       // —— UI ——
       "Conoce a": "Voici",
       "Explorar subsistemas": "Explorer les sous-systèmes",
+      "Explorar": "Explorer",
+      "Conéctate": "Contact",
+      "Volver arriba ↑": "Haut de page ↑",
       "Ver reveal ▶": "Voir le reveal ▶",
       "Subsistemas": "Sous-systèmes",
       "Prototipos": "Prototypes",

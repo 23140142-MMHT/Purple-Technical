@@ -113,16 +113,31 @@
 
   <!-- ░░░ FOOTER ░░░ -->
   <footer class="footer">
-    <div class="container footer-inner">
+    <div class="container footer-grid">
       <div class="footer-brand">
         <img class="footer-logo" src="assets/logo.png" alt="" onerror="this.style.display='none'" />
         <img class="footer-wordmark" src="assets/wordmark.png" alt="Aztech II" onerror="this.style.display='none'" />
         <strong id="footer-team">Aztech II</strong>
         <p id="footer-desc"></p>
       </div>
-      <div class="socials" id="footer-socials"></div>
+      <nav class="footer-col">
+        <h4 data-i18n="Explorar">Explorar</h4>
+        <a href="#top" data-i18n="Robot">Robot</a>
+        <a href="#contents" data-i18n="Subsistemas">Subsistemas</a>
+        <a href="#mexico-vs-niagara" data-i18n="Prototipos">Prototipos</a>
+        <a href="#software" data-i18n="Software">Software</a>
+      </nav>
+      <div class="footer-col">
+        <h4 data-i18n="Conéctate">Conéctate</h4>
+        <div class="socials" id="footer-socials"></div>
+      </div>
     </div>
-    <div class="container footer-bottom" id="footer-bottom"></div>
+    <div class="footer-bottom-bar">
+      <div class="container footer-bottom">
+        <span id="footer-bottom"></span>
+        <a href="#top" class="footer-top" data-i18n="Volver arriba ↑">Volver arriba ↑</a>
+      </div>
+    </div>
   </footer>
 
   <!-- ░░░ CHAT (FAB + drawer) ░░░ -->
