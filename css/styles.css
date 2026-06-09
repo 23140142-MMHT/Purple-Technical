@@ -105,7 +105,7 @@ img { max-width: 100%; display: block; }
 .hamburger { display: none; background: none; border: none; color: var(--fg); font-size: 22px; cursor: pointer; }
 
 /* ---- Hero ---- */
-.hero { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding-top: 64px; padding-bottom: 64px; }
+.hero { display: grid; grid-template-columns: 1fr 1.35fr; gap: 40px; align-items: center; padding-top: 64px; padding-bottom: 64px; }
 .hero-text h1 { font-size: clamp(40px, 6vw, 72px); line-height: .95; margin: 18px 0; }
 .hero-kicker { display: block; font-size: clamp(20px, 3vw, 30px); font-weight: 500; color: color-mix(in srgb, var(--muted) 70%, transparent); }
 .gradient { background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
@@ -133,7 +133,7 @@ img { max-width: 100%; display: block; }
 /* Render del robot en la mitad derecha del hero (fondo negro = combina con el tema) */
 .hero-image-wrap { display: flex; align-items: center; justify-content: center; width: 100%; }
 .hero-image {
-  width: 100%; height: auto; max-height: 76vh; object-fit: contain;
+  width: 100%; height: auto; max-height: 86vh; object-fit: contain;
 }
 
 /* Visor 3D embebido dentro de una sección (ej. Drivetrain) */
