@@ -204,7 +204,7 @@ window.BINDER = {
           label: "V1 | Cuautitlan Regional",
           model3d: "assets/cad/cuautitlan.glb",
           strengths: [
-            "Rutina autónoma consistente de 6 artifacts",
+            "Rutina consistente de 6 artifacts en teleop",
             "Chasis rápido y confiable",
             "El intake absorbía los artifacts de forma suave y rápida",
           ],
