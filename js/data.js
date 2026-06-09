@@ -206,7 +206,7 @@ window.BINDER = {
           weaknesses: ["Slow cycles", "Problems with intake and shooter compressions"],
         },
         {
-          label: "V3 | Now - Niagara Premier Event",
+          label: "Actual Version | Niagara Premier Event",
           model3d: "assets/cad/niagara.glb",
           strengths: [
             "New intake that can take 3 at a time",
