@@ -20,7 +20,6 @@
   setText("brand-team", T.name);
   setText("brand-name", "");
   $("season-badge").textContent = T.season + " · " + T.game;
-  $("hero-eyebrow").textContent = tr("Temporada") + " " + T.season + " · " + T.game;
   $("hero-robot").textContent = T.robotName;
   $("hero-tagline").textContent = T.tagline;
   $("hero-yt").href = "https://www.youtube.com/watch?v=" + T.youtubeId;

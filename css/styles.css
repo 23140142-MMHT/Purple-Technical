@@ -128,6 +128,8 @@ img { max-width: 100%; display: block; }
 
 /* ---- Hero ---- */
 .hero { display: grid; grid-template-columns: 1fr 1.35fr; gap: 40px; align-items: center; padding-top: 64px; padding-bottom: 64px; }
+/* Logo de la temporada FTC DECODE (reemplaza el badge de texto del hero) */
+.hero-decode { height: clamp(110px, 16vw, 150px); width: auto; display: block; }
 .hero-text h1 { font-size: clamp(40px, 6vw, 72px); line-height: .95; margin: 18px 0; }
 .hero-kicker { display: block; font-size: clamp(20px, 3vw, 30px); font-weight: 500; color: color-mix(in srgb, var(--muted) 70%, transparent); }
 .gradient { background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
