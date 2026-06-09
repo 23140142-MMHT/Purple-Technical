@@ -102,6 +102,25 @@ img { max-width: 100%; display: block; }
 .nav-links a { padding: 8px 12px; border-radius: 8px; font-size: 14px; color: var(--muted); transition: color .2s; }
 .nav-links a:hover { color: var(--fg); }
 .season-badge { border: 1px solid var(--border); color: var(--muted); padding: 4px 12px; border-radius: 999px; font-size: 12px; }
+
+/* Menú de idiomas ES / EN / FR */
+.lang-menu { display: inline-flex; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; }
+.lang-btn { background: none; border: none; color: var(--muted); font-size: 12px; font-weight: 700; padding: 6px 10px; cursor: pointer; transition: all .2s; line-height: 1; }
+.lang-btn:hover { color: var(--fg); }
+.lang-btn.active { background: var(--accent); color: #0a0512; }
+
+/* Ocultar la barra y el branding del traductor de Google */
+#google_translate_element { display: none !important; }
+.goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
+body { top: 0 !important; position: static !important; }
+.goog-te-gadget { height: 0; overflow: hidden; font-size: 0 !important; }
+#goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+.goog-text-highlight { background: none !important; box-shadow: none !important; }
+@media (max-width: 640px) {
+  .season-badge { display: none; }
+  .brand-wordmark { max-width: 120px; }
+  .lang-btn { padding: 6px 8px; font-size: 11px; }
+}
 .hamburger { display: none; background: none; border: none; color: var(--fg); font-size: 22px; cursor: pointer; }
 
 /* ---- Hero ---- */

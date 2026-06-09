@@ -64,6 +64,12 @@
         <a href="#mexico-vs-niagara">Prototipos</a>
         <a href="#software">Software</a>
       </nav>
+      <!-- Menú de idiomas (no se traduce a sí mismo) -->
+      <div class="lang-menu notranslate" translate="no" aria-label="Idioma">
+        <button class="lang-btn active" data-lang="es" type="button">ES</button>
+        <button class="lang-btn" data-lang="en" type="button">EN</button>
+        <button class="lang-btn" data-lang="fr" type="button">FR</button>
+      </div>
       <span class="season-badge" id="season-badge">2026</span>
       <button class="hamburger" id="hamburger" aria-label="Menú">☰</button>
     </div>
@@ -76,7 +82,7 @@
         <span class="badge" id="hero-eyebrow">Temporada 2026</span>
         <h1>
           <span class="hero-kicker">Conoce a</span>
-          <span class="gradient" id="hero-robot">PURPLE SPIKE</span>
+          <span class="gradient notranslate" translate="no" id="hero-robot">PURPLE SPIKE</span>
         </h1>
         <p id="hero-tagline">Built to ride the surge.</p>
         <div class="hero-cta">
@@ -147,5 +153,10 @@
   <script src="js/chat.js"></script>
   <!-- Visor 3D (módulo: usa three.js) -->
   <script type="module" src="js/cad.js"></script>
+
+  <!-- Menú de idiomas (ES/EN/FR) vía Google Website Translator -->
+  <div id="google_translate_element"></div>
+  <script src="js/translate.js"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
