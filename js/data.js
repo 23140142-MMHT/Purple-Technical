@@ -202,7 +202,7 @@ window.BINDER = {
       versions: [
         {
           label: "V1 | Cuautitlan Regional",
-          model3d: null, // sube assets/cad/cuautitlan.glb cuando lo tengas
+          model3d: "assets/cad/cuautitlan.glb",
           strengths: [
             "Rutina de teleop consistente de 6 artifacts",
             "Chasis rápido y confiable",
