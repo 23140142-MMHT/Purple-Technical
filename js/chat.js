@@ -1,7 +1,7 @@
 /* ════════════════════════════════════════════════════════════════════════
-   chat.js — Chatbot de PREGUNTAS PRE-HECHAS (no usa IA / API key).
-   Muestra las preguntas de js/faq.js por sección; al elegir una, responde
-   con su respuesta. Formato pregunta → respuesta. Trilingüe (ES/EN/FR).
+   chat.js — Preguntas pre-hechas en formato ACORDEÓN (no usa IA / API key).
+   Las preguntas de js/faq.js se listan por sección; al hacer click en una,
+   se despliega su respuesta justo debajo (toggle). Trilingüe (ES/EN/FR).
    Para editar las preguntas/respuestas: edita js/faq.js.
    ════════════════════════════════════════════════════════════════════════ */
 (function () {
@@ -20,48 +20,38 @@
 
   var INTRO = { es: "Elige una pregunta:", en: "Pick a question:", fr: "Choisis une question :" };
 
-  function addMessage(role, text) {
-    var el = document.createElement("div");
-    el.className = "msg " + (role === "user" ? "user" : "bot");
-    el.textContent = text;
-    messagesEl.appendChild(el);
-    return el;
-  }
-
-  // Dibuja el menú de preguntas (secciones + botones). Se reusa tras cada respuesta.
-  function renderMenu() {
-    var menu = document.createElement("div");
-    menu.className = "faq-menu";
+  // Acordeón: cada pregunta despliega su respuesta debajo (toggle).
+  function buildAccordion() {
+    var wrap = document.createElement("div");
+    wrap.className = "faq-acc";
     var html = '<p class="faq-intro">' + pick(INTRO) + "</p>";
-    FAQ.forEach(function (sec, si) {
+    FAQ.forEach(function (sec) {
       html += '<div class="faq-section"><h5>' + pick(sec.section) + "</h5>";
-      sec.items.forEach(function (it, ii) {
+      sec.items.forEach(function (it) {
         html +=
-          '<button type="button" class="faq-q" data-s="' + si + '" data-i="' + ii + '">' +
-          pick(it.q) +
-          "</button>";
+          '<div class="faq-item">' +
+          '<button type="button" class="faq-q">' +
+          "<span>" + pick(it.q) + "</span>" +
+          '<span class="faq-caret">▾</span>' +
+          "</button>" +
+          '<div class="faq-a">' + pick(it.a) + "</div>" +
+          "</div>";
       });
       html += "</div>";
     });
-    menu.innerHTML = html;
-    menu.querySelectorAll(".faq-q").forEach(function (b) {
+    wrap.innerHTML = html;
+    wrap.querySelectorAll(".faq-q").forEach(function (b) {
       b.addEventListener("click", function () {
-        var it = FAQ[b.getAttribute("data-s")].items[b.getAttribute("data-i")];
-        menu.remove(); // quita este menú…
-        addMessage("user", pick(it.q));
-        addMessage("bot", pick(it.a));
-        renderMenu(); // …y vuelve a ponerlo abajo para seguir preguntando
-        messagesEl.scrollTop = messagesEl.scrollHeight;
+        b.parentElement.classList.toggle("open");
       });
     });
-    messagesEl.appendChild(menu);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
+    messagesEl.appendChild(wrap);
   }
 
   function openDrawer() {
     drawer.classList.add("open");
     drawer.setAttribute("aria-hidden", "false");
-    if (!messagesEl.querySelector(".faq-menu") && !messagesEl.querySelector(".msg")) renderMenu();
+    if (!messagesEl.querySelector(".faq-acc")) buildAccordion();
   }
   function closeDrawer() {
     drawer.classList.remove("open");
