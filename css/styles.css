@@ -130,6 +130,13 @@ img { max-width: 100%; display: block; }
 .hero-logo-wrap { display: grid; place-items: center; aspect-ratio: 1 / 1; width: 100%; }
 .hero-logo { max-width: 80%; max-height: 80%; object-fit: contain; filter: drop-shadow(0 0 45px rgba(143, 0, 255, 0.5)); }
 
+/* Render del robot en la mitad derecha del hero (fondo negro = combina con el tema) */
+.hero-image-wrap { display: flex; align-items: center; justify-content: center; width: 100%; }
+.hero-image {
+  width: 100%; height: auto; max-height: 76vh; object-fit: contain;
+  border-radius: 16px; box-shadow: 0 0 70px -12px rgba(143, 0, 255, 0.5);
+}
+
 /* Visor 3D embebido dentro de una sección (ej. Drivetrain) */
 .cad-mount { cursor: grab; }
 .cad-mount:active { cursor: grabbing; }
