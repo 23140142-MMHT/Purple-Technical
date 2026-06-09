@@ -1,108 +1,73 @@
 /* ════════════════════════════════════════════════════════════════════════
-   chat.js — widget de chat. Llama a BINDER.chatEndpoint (la función serverless).
-   La API key NUNCA está aquí: vive en el servidor (api/chat.js).
-   Sin backend (al abrir en local), responde un mensaje de "no configurado".
+   chat.js — Chatbot de PREGUNTAS PRE-HECHAS (no usa IA / API key).
+   Muestra las preguntas de js/faq.js por sección; al elegir una, responde
+   con su respuesta. Formato pregunta → respuesta. Trilingüe (ES/EN/FR).
+   Para editar las preguntas/respuestas: edita js/faq.js.
    ════════════════════════════════════════════════════════════════════════ */
 (function () {
-  const B = window.BINDER;
-  const tr = window.t || function (s) { return s; };
-  const endpoint = B.chatEndpoint || "/api/chat";
+  var lang = (window.I18N && window.I18N.lang) || "es";
+  var FAQ = window.FAQ || [];
+  function pick(o) { return (o && (o[lang] || o.es)) || ""; }
 
-  const fab = document.getElementById("chat-fab");
-  const drawer = document.getElementById("chat-drawer");
-  const close = document.getElementById("chat-close");
-  const form = document.getElementById("chat-form");
-  const input = document.getElementById("chat-text");
-  const messagesEl = document.getElementById("chat-messages");
+  var fab = document.getElementById("chat-fab");
+  var drawer = document.getElementById("chat-drawer");
+  var closeBtn = document.getElementById("chat-close");
+  var form = document.getElementById("chat-form");
+  var messagesEl = document.getElementById("chat-messages");
 
-  const history = []; // [{role, content}]
-  let busy = false;
+  // Sin entrada de texto libre: solo preguntas pre-hechas.
+  if (form) form.style.display = "none";
 
-  const SUGGESTIONS = [
-    tr("¿Qué tipo de drivetrain usan?"),
-    tr("¿Cómo funciona el turret?"),
-    tr("¿Cuál es su estrategia autónoma?"),
-  ];
-
-  function renderSuggestions() {
-    if (history.length) return;
-    const wrap = document.createElement("div");
-    wrap.className = "chat-suggestions";
-    wrap.innerHTML =
-      `<p style="color:var(--muted);font-size:14px">${tr("Pregúntame sobre")} ${B.team.robotName}:</p>` +
-      SUGGESTIONS.map((q) => `<button type="button">${q}</button>`).join("");
-    wrap.querySelectorAll("button").forEach((btn) =>
-      btn.addEventListener("click", () => send(btn.textContent))
-    );
-    messagesEl.appendChild(wrap);
-  }
+  var INTRO = { es: "Elige una pregunta:", en: "Pick a question:", fr: "Choisis une question :" };
 
   function addMessage(role, text) {
-    const el = document.createElement("div");
+    var el = document.createElement("div");
     el.className = "msg " + (role === "user" ? "user" : "bot");
     el.textContent = text;
     messagesEl.appendChild(el);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
     return el;
+  }
+
+  // Dibuja el menú de preguntas (secciones + botones). Se reusa tras cada respuesta.
+  function renderMenu() {
+    var menu = document.createElement("div");
+    menu.className = "faq-menu";
+    var html = '<p class="faq-intro">' + pick(INTRO) + "</p>";
+    FAQ.forEach(function (sec, si) {
+      html += '<div class="faq-section"><h5>' + pick(sec.section) + "</h5>";
+      sec.items.forEach(function (it, ii) {
+        html +=
+          '<button type="button" class="faq-q" data-s="' + si + '" data-i="' + ii + '">' +
+          pick(it.q) +
+          "</button>";
+      });
+      html += "</div>";
+    });
+    menu.innerHTML = html;
+    menu.querySelectorAll(".faq-q").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var it = FAQ[b.getAttribute("data-s")].items[b.getAttribute("data-i")];
+        menu.remove(); // quita este menú…
+        addMessage("user", pick(it.q));
+        addMessage("bot", pick(it.a));
+        renderMenu(); // …y vuelve a ponerlo abajo para seguir preguntando
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      });
+    });
+    messagesEl.appendChild(menu);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
   }
 
   function openDrawer() {
     drawer.classList.add("open");
     drawer.setAttribute("aria-hidden", "false");
-    if (!history.length && !messagesEl.querySelector(".chat-suggestions")) renderSuggestions();
+    if (!messagesEl.querySelector(".faq-menu") && !messagesEl.querySelector(".msg")) renderMenu();
   }
   function closeDrawer() {
     drawer.classList.remove("open");
     drawer.setAttribute("aria-hidden", "true");
   }
 
-  async function send(text) {
-    text = (text || "").trim();
-    if (!text || busy) return;
-    busy = true;
-
-    const sug = messagesEl.querySelector(".chat-suggestions");
-    if (sug) sug.remove();
-
-    addMessage("user", text);
-    history.push({ role: "user", content: text });
-    input.value = "";
-
-    const botEl = addMessage("bot", "…");
-    let acc = "";
-
-    try {
-      const res = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: history }),
-      });
-      if (!res.body) throw new Error("sin cuerpo");
-
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      botEl.textContent = "";
-      for (;;) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        acc += decoder.decode(value, { stream: true });
-        botEl.textContent = acc;
-        messagesEl.scrollTop = messagesEl.scrollHeight;
-      }
-      if (acc) history.push({ role: "assistant", content: acc });
-    } catch (err) {
-      botEl.textContent = tr(
-        "El asistente AI no está conectado. Despliega la función serverless (api/chat.js) con tu ANTHROPIC_API_KEY para activarlo."
-      );
-    } finally {
-      busy = false;
-    }
-  }
-
-  fab.addEventListener("click", openDrawer);
-  close.addEventListener("click", closeDrawer);
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    send(input.value);
-  });
+  if (fab) fab.addEventListener("click", openDrawer);
+  if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
 })();
