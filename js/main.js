@@ -194,8 +194,8 @@
             <span class="eyebrow">${vnum || "Versión"}</span>
             <h2>${vname}.</h2>
             <div class="pv-info-stack">
-              ${swList("Strengths", v.strengths, "good", "✓")}
-              ${swList("Weaknesses", v.weaknesses, "bad", "✕")}
+              ${swList("Fortalezas", v.strengths, "good", "✓")}
+              ${swList("Debilidades", v.weaknesses, "bad", "✕")}
             </div>
           </div>
         </section>`;
