@@ -258,6 +258,11 @@ img { max-width: 100%; display: block; }
 .section .media .placeholder { position: absolute; inset: 0; display: grid; place-items: center; color: #7a5bb0; font-size: 13px; text-align: center; padding: 20px; }
 .section .eyebrow { color: var(--accent); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .15em; }
 .section h2 { font-size: clamp(32px, 4.5vw, 52px); margin: 10px 0; }
+/* Títulos de cada apartado con el degradado morado de la marca (como el hero) */
+.section h2, .proto-head-row h2 {
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
 .section .summary { color: var(--muted); font-size: 18px; }
 .features { margin-top: 18px; }
 .features-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .15em; color: var(--muted); border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 16px; }
