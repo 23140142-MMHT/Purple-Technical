@@ -51,7 +51,7 @@ window.BINDER = {
       model3dRotation: { x: -90, y: 0, z: 0 },
       specs: [
         { label: "Tipo", value: "Mecanum Custom" },
-        { label: "Motores", value: "4x goBILDA 5203 (415 RPM)" },
+        { label: "Motores", value: "4x goBILDA 5203 (435 RPM)" },
         { label: "Odometría", value: "2 dead wheels + IMU" },
       ],
       features: [
@@ -74,7 +74,7 @@ window.BINDER = {
       specs: [
         { label: "Tipo", value: "Indexing Asimetrico" },
         { label: "Motor", value: "Rev HD Hex Motor" },
-        { label: "Captura", value: "< 0.5s" },
+        { label: "Captura", value: "~1 s" },
       ],
       features: [
         {
@@ -93,7 +93,7 @@ window.BINDER = {
       model3d: "assets/cad/shooter.glb",
       model3dRotation: { x: -90, y: 0, z: 0 },
       specs: [
-        { label: "Tipo", value: "Doble flywheel" },
+        { label: "Tipo", value: "Flywheel de doble motor" },
         { label: "Control", value: "Velocity PIDF" },
         { label: "Rango", value: "1 - 4 m" },
       ],
@@ -115,9 +115,9 @@ window.BINDER = {
       model3d: "assets/cad/transfer.glb",
       model3dRotation: { x: -90, y: 0, z: 0 },
       specs: [
-        { label: "Tipo", value: "Banda + indexador" },
+        { label: "Tipo", value: "Canal 3D + gate servo" },
         { label: "Cola", value: "3 piezas" },
-        { label: "Sensores", value: "2x beam break" },
+        { label: "Compresión", value: "3 mm constante" },
       ],
       features: [
         {
@@ -131,13 +131,13 @@ window.BINDER = {
       id: "turret",
       title: "Turret",
       icon: "crosshair",
-      summary: "Direct drive turret con auto aiming que apunta siempre al goal",
+      summary: "Turret de seguimiento con auto-aim que apunta siempre al goal",
       image: "assets/subsystems/turret.jpg",
       model3d: "assets/cad/turret.glb",
       model3dRotation: { x: -90, y: 0, z: 0 },
       specs: [
         { label: "Rango", value: "±150°" },
-        { label: "Feedback", value: "Encoder absoluto" },
+        { label: "Feedback", value: "Encoder de motor" },
         { label: "Apuntado", value: "Auto-aim por odometría" },
       ],
       features: [
@@ -204,7 +204,7 @@ window.BINDER = {
           label: "V1 | Cuautitlan Regional",
           model3d: "assets/cad/cuautitlan.glb",
           strengths: [
-            "Rutina de teleop consistente de 6 artifacts",
+            "Rutina autónoma consistente de 6 artifacts",
             "Chasis rápido y confiable",
             "El intake absorbía los artifacts de forma suave y rápida",
           ],
