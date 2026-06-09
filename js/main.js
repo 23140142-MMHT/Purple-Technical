@@ -181,7 +181,7 @@
         </div>`;
       }).join("");
       out.push(`<section class="section section--proto3d" id="${p.id}">
-        <div class="proto3d-head" style="max-width:none">
+        <div class="proto3d-head proto3d-head--full">
           <span class="eyebrow">Prototipos · ${p.number}</span>
           <h2>${p.title}.</h2>
           <p class="summary">${p.summary}</p>

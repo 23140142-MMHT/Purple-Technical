@@ -151,6 +151,11 @@ img { max-width: 100%; display: block; }
   font-family: "Conthrax", "Montserrat", sans-serif; color: var(--accent);
 }
 .section--proto3d .features { max-width: 820px; margin-top: 28px; }
+
+/* Cabecera "Our Robots" como fila completa, centrada y alineada con las versiones */
+.proto3d-head--full { max-width: 1400px; margin: 0 auto 44px; text-align: center; }
+.proto3d-head--full h2 { margin: 8px 0 0; }
+.proto3d-head--full .summary { max-width: 720px; margin: 14px auto 0; }
 @media (max-width: 860px) { .proto3d-grid { grid-template-columns: 1fr; } }
 
 /* La comparativa (resultado final) destaca: visores grandes y casi a todo el ancho */
