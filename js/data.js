@@ -192,7 +192,7 @@ window.BINDER = {
   prototyping: [
     {
       id: "mexico-vs-niagara",
-      title: "Our Robots",
+      title: "Nuestros robots",
       summary:
         "Las 3 versiones mas importantes de Purple Spike. Gira cada modelo 3D para compararlos.",
       // Rotación de corrección aplicada a TODOS los modelos 3D.
