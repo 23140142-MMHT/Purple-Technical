@@ -184,8 +184,8 @@ window.BINDER = {
         { label: "Niagara Cup", model3d: "assets/cad/niagara.glb" },
         // { label: "Otro CAD", model3d: "assets/cad/otro.glb" },
       ],
-      // Muestra un recuadro "Espacio para otro CAD" al final (ponlo en false para ocultarlo).
-      addSlot: true,
+      // Recuadro extra al final con este título (ponlo en false para ocultarlo).
+      addSlot: "Regional Cuautitlan Izcalli",
       features: [
         {
           text: "Rediseño del transfer para eliminar atascos vistos en México",

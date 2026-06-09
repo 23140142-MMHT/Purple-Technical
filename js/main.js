@@ -169,8 +169,9 @@
         ${cadMountRaw(m.model3d, p.model3dRotation)}
         <figcaption>${m.label}</figcaption>
       </figure>`).join("");
+      const addLabel = typeof p.addSlot === "string" ? p.addSlot : "Espacio para otro CAD";
       const addCell = p.addSlot
-        ? `<div class="proto3d-add"><span class="proto3d-add-plus">＋</span><span>Espacio para otro CAD</span></div>`
+        ? `<div class="proto3d-add"><span class="proto3d-add-plus">＋</span><span>${addLabel}</span></div>`
         : "";
       out.push(`<section class="section section--proto3d" id="${p.id}">
         <div class="proto3d-grid">
