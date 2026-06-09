@@ -158,53 +158,31 @@ window.BINDER = {
     summary:
       "El cerebro de PURPLE SPIKE: odometría, auto-aim del turret, control de flywheel y máquinas de estado, todo programado con un LLM local como par-programador.",
     image: "assets/software/control.png",
-    features: [
+    // Cuadritos compactos (título + 1 línea). Solo lo más importante.
+    components: [
       {
-        text: "Odometría Pinpoint + Pedro: conoce la pose (x, y, θ) y la velocidad del robot en el campo",
-        sub: [
-          "goBILDA Pinpoint fusiona 2 dead-wheels en un pod de 4 barras con IMU; sin esto no existe el auto-aim ni la lógica de zonas",
-        ],
+        title: "Odometría Pinpoint",
+        desc: "Pose (x, y, θ) y velocidad cada loop con 2 dead-wheels + IMU.",
       },
       {
-        text: "Auto-aim del turret: el lanzador apunta solo al goal aunque el chasis se mueva o gire, sin input del piloto",
-        sub: [
-          "Calcula el azimut con atan2 desde la pose y lo sigue con un controlador dual-PD + feedforward de fricción estática (kS)",
-        ],
+        title: "Auto-aim del turret",
+        desc: "Apunta solo al goal (atan2 + dual-PD + kS), sin input del piloto.",
       },
       {
-        text: "Control de velocidad de los 2 flywheels (PIDF) para una salida repetible pese a la caída de RPM al disparar",
-        sub: [
-          "2 DcMotorEx en lazo de velocidad: feedforward F·target + trim proporcional P·e, validado por el encoder más lento (lectura conservadora de 'listo')",
-        ],
+        title: "Flywheel PIDF ×2",
+        desc: "Velocidad de salida repetible; valida con el encoder más lento.",
       },
       {
-        text: "Servo de compuerta + FSM de ráfaga: solo libera el ARTIFACT cuando el flywheel está a velocidad (evita tiros débiles y atascos)",
-        sub: ["Máquina de estados IDLE → OPENING → BURSTING → DONE, sincronizada con la alimentación del intake"],
+        title: "FSM de ciclo + ráfaga",
+        desc: "Coordina intake/transfer/shooter y solo dispara a velocidad.",
       },
       {
-        text: "FSM de ciclo (IDLE / COLLECTING / SHOOTING / OUTTAKE) que coordina intake, transfer y shooter",
-        sub: [
-          "Recolecta los artifacts en horizontal para ciclos más rápidos",
-          "Detecta 'lleno' por timeout para encadenar el tiro en autónomo",
-        ],
+        title: "Par-programador con IA",
+        desc: "LLM 100% local: la IA ejecuta, nosotros ingenieamos.",
       },
       {
-        text: "LUT rango → TPS (planeado): elige la velocidad correcta por distancia sin resolver aerodinámica en tiempo real",
-        sub: ["Interpola linealmente entre puntos de calibración medidos en el campo"],
-      },
-      {
-        text: "Gate de zona de lanzamiento (planeado): bloquea el disparo fuera de las 2 launch zones (regla G416) usando solo la pose",
-        sub: ["Modelo de funciones (GeoGebra) de ambas zonas; inZone(x, y) habilita o bloquea triggerShoot()"],
-      },
-      {
-        text: "Shoot On The Move — SOTM (planeado): acierta al goal en movimiento compensando la velocidad que hereda el ARTIFACT",
-        sub: ["Objetivo virtual G' = G − v·t_f con iteración de punto fijo; re-consulta azimut y LUT sobre G'"],
-      },
-      {
-        text: "Par-programador con IA: corremos un LLM 100% local en las laptops del equipo para cerrar la brecha entre entender y programar",
-        sub: [
-          "Programadores de 13–14 años: 'la IA ejecuta, nosotros ingenieamos' — sabemos qué necesitamos, por qué y cómo verificar que funciona",
-        ],
+        title: "Mejoras planeadas",
+        desc: "LUT rango→TPS, gate de zona (G416) y Shoot On The Move.",
       },
     ],
   },

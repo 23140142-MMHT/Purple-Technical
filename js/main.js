@@ -145,11 +145,20 @@
     }));
   });
 
-  out.push(section({
-    id: soft.id, eyebrow: "Software · " + soft.number, title: soft.title, summary: soft.summary,
-    mediaHtml: plainMedia(soft.image, "Diagrama de control de PURPLE SPIKE"),
-    features: soft.features, specs: null, detail: null,
-  }));
+  // Software: mismo formato 2 columnas de los mecanismos, pero la info son
+  // "cuadritos" (cards) en cuadrícula que siguen al lado y debajo de la imagen.
+  const swCards = (soft.components || [])
+    .map((c) => `<div class="sw-card"><h4>${c.title}</h4><p>${c.desc}</p></div>`)
+    .join("");
+  out.push(`<section class="section" id="${soft.id}">
+    <div>${plainMedia(soft.image, "Diagrama de control de PURPLE SPIKE")}</div>
+    <div>
+      <span class="eyebrow">Software · ${soft.number}</span>
+      <h2>${soft.title}.</h2>
+      <p class="summary">${soft.summary}</p>
+      <div class="sw-grid">${swCards}</div>
+    </div>
+  </section>`);
 
   // Un visor 3D suelto (por clase, sin id) para la comparativa.
   function cadMountRaw(modelPath, rot) {

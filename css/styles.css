@@ -140,6 +140,17 @@ img { max-width: 100%; display: block; }
 .plain-media { display: flex; align-items: center; justify-content: center; width: 100%; }
 .plain-media img { width: 100%; height: auto; max-height: 72vh; object-fit: contain; }
 
+/* Software: cuadritos compactos (título + 1 línea) en cuadrícula */
+.sw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+.sw-card {
+  border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px;
+  background: color-mix(in srgb, var(--surface) 50%, transparent); transition: border-color .2s;
+}
+.sw-card:hover { border-color: var(--accent); }
+.sw-card h4 { font-family: "Conthrax", "Montserrat", sans-serif; font-size: 13px; color: var(--accent); margin-bottom: 6px; }
+.sw-card p { font-size: 13px; line-height: 1.45; color: var(--fg); }
+@media (max-width: 860px) { .sw-grid { grid-template-columns: 1fr; } }
+
 /* Visor 3D embebido dentro de una sección (ej. Drivetrain) */
 .cad-mount { cursor: grab; }
 .cad-mount:active { cursor: grabbing; }
