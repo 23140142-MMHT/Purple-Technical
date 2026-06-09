@@ -19,6 +19,12 @@
   if (form) form.style.display = "none";
 
   var INTRO = { es: "Elige una pregunta:", en: "Pick a question:", fr: "Choisis une question :" };
+  // Mensaje de cierre que invita a acercarse al pit.
+  var OUTRO = {
+    es: "¿Más preguntas? Acércate a nuestro pit — <strong>Aztech II 17626</strong>. ¡Te esperamos! 💜",
+    en: "More questions? Come by our pit — <strong>Aztech II 17626</strong>. We'd love to chat! 💜",
+    fr: "D'autres questions ? Passe à notre pit — <strong>Aztech II 17626</strong>. On t'attend ! 💜",
+  };
 
   // Acordeón: cada pregunta despliega su respuesta debajo (toggle).
   function buildAccordion() {
@@ -39,6 +45,7 @@
       });
       html += "</div>";
     });
+    html += '<div class="faq-outro">' + pick(OUTRO) + "</div>";
     wrap.innerHTML = html;
     wrap.querySelectorAll(".faq-q").forEach(function (b) {
       b.addEventListener("click", function () {
