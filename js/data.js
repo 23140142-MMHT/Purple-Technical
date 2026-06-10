@@ -36,10 +36,6 @@ window.BINDER = {
      .glb : un solo archivo en assets/cad/robot.glb (cambia la ruta abajo). */
   cadModelPath: "assets/cad/robot.glb",
 
-  /* ---- Endpoint del chat (la función serverless). Cámbialo al desplegar. ----
-     En local sin backend, el chat responde un mensaje de "no configurado". */
-  chatEndpoint: "/api/chat",
-
   /* ---- SUBSISTEMAS (categoría Mecánico) ----
      Cada uno: imagen a la izquierda + info a la derecha (estilo 4414).
      'image' debe incluir el bumper visible para dar escala. */
