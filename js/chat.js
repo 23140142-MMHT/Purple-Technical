@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════════════════════
-   chat.js — Preguntas pre-hechas en formato ACORDEÓN (no usa IA / API key).
+   chat.js — Preguntas frecuentes en formato ACORDEÓN (no es un chat).
    Las preguntas de js/faq.js se listan por sección; al hacer click en una,
    se despliega su respuesta justo debajo (toggle). Trilingüe (ES/EN/FR).
    Para editar las preguntas/respuestas: edita js/faq.js.
@@ -12,11 +12,7 @@
   var fab = document.getElementById("chat-fab");
   var drawer = document.getElementById("chat-drawer");
   var closeBtn = document.getElementById("chat-close");
-  var form = document.getElementById("chat-form");
   var messagesEl = document.getElementById("chat-messages");
-
-  // Sin entrada de texto libre: solo preguntas pre-hechas.
-  if (form) form.style.display = "none";
 
   var INTRO = { es: "Elige una pregunta:", en: "Pick a question:", fr: "Choisis une question :" };
   // Mensaje de cierre que invita a acercarse al pit.

@@ -29,7 +29,6 @@
   $("footer-desc").textContent =
     tr("Technical Binder de") + " " + T.robotName + " — " + tr("temporada") + " " +
     T.season + " (" + T.game + "). " + T.location + ".";
-  $("chat-title").textContent = "Aztlo";
 
   // Redes del footer
   const socialMap = { website: "🌐", youtube: "▶", instagram: "📷", github: "‹›" };
