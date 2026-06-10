@@ -81,7 +81,9 @@ export default async function handler(req) {
   });
 
   if (!upstream.ok || !upstream.body) {
-    return textResponse("El asistente tuvo un problema. Intenta de nuevo en un momento.");
+    // Muestra el error real de Anthropic para diagnosticar (key, créditos, modelo…).
+    const detail = await upstream.text().catch(() => "");
+    return textResponse("Aztlo error " + upstream.status + ": " + detail.slice(0, 600));
   }
 
   // Transformamos el SSE de Anthropic en texto plano (solo los deltas de texto).
