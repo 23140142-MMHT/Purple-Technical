@@ -81,9 +81,9 @@ export default async function handler(req) {
   });
 
   if (!upstream.ok || !upstream.body) {
-    // Muestra el error real de Anthropic para diagnosticar (key, créditos, modelo…).
-    const detail = await upstream.text().catch(() => "");
-    return textResponse("Aztlo error " + upstream.status + ": " + detail.slice(0, 600));
+    return textResponse(
+      "Aztlo no está disponible ahora mismo. Mientras tanto, ¡acércate a nuestro pit Aztech II 17626 o escríbenos a @aztech_2_17626!"
+    );
   }
 
   // Transformamos el SSE de Anthropic en texto plano (solo los deltas de texto).
