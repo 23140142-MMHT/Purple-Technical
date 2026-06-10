@@ -89,9 +89,7 @@
       }
       if (acc) history.push({ role: "assistant", content: acc });
     } catch (e) {
-      botEl.textContent = tr(
-        "El asistente AI no está conectado. Despliega la función serverless (api/chat.js) con tu ANTHROPIC_API_KEY para activarlo."
-      );
+      botEl.textContent = tr("Aztlo no está disponible ahora mismo. Intenta de nuevo en un momento.");
     } finally {
       busy = false;
     }

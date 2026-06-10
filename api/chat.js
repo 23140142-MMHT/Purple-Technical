@@ -1,16 +1,17 @@
 /* ════════════════════════════════════════════════════════════════════════
-   api/chat.js — FUNCIÓN SERVERLESS (Vercel Edge) para el chatbot.
+   api/chat.js — FUNCIÓN SERVERLESS (Vercel Edge) para el chatbot "Aztlo".
 
-   👉 Aquí —y SOLO aquí, en el servidor— vive tu API key. Nunca llega al
-      navegador. Por eso el chat es seguro aunque el sitio sea estático.
+   Usa Google Gemini (tiene una capa GRATIS, sin tarjeta). La API key vive
+   SOLO aquí (en el servidor), nunca llega al navegador.
 
-   CÓMO ACTIVARLO:
-     1) Sube esta carpeta a GitHub y conéctala a Vercel (vercel.com).
+   CÓMO ACTIVARLO (gratis):
+     1) Consigue una API key gratis en  https://aistudio.google.com/app/apikey
+        (inicia sesión con Google → "Create API key" → cópiala).
      2) En Vercel → Project → Settings → Environment Variables agrega:
-          ANTHROPIC_API_KEY = sk-ant-...
-     3) Deploy. La ruta /api/chat queda lista (BINDER.chatEndpoint = "/api/chat").
+          GEMINI_API_KEY = AIza...
+     3) Redeploy. Aztlo queda listo, sin costo.
 
-   Edita el TEAM y SYSTEM de abajo para que el bot conozca tu robot.
+   Edita el TEAM y SYSTEM de abajo para ajustar lo que sabe Aztlo.
    No usa ninguna librería: solo fetch (incluido en el runtime de Vercel).
    ════════════════════════════════════════════════════════════════════════ */
 export const config = { runtime: "edge" };
@@ -18,7 +19,10 @@ export const config = { runtime: "edge" };
 // Datos del equipo (edítalos si cambian).
 const TEAM = { number: 17626, name: "Aztech II", robot: "PURPLE SPIKE", season: 2026, game: "DECODE" };
 
-// Contexto del robot (sacado del Engineering Portfolio) para que Aztlo responda con precisión.
+// Modelo gratis de Gemini (rápido y suficiente). Puedes probar "gemini-2.5-flash".
+const MODEL = "gemini-2.0-flash";
+
+// Contexto del robot (del Engineering Portfolio) para que Aztlo responda con precisión.
 const SYSTEM = `Eres "Aztlo", el asistente oficial del equipo FTC ${TEAM.number} ${TEAM.name}.
 Conoces a fondo su robot ${TEAM.robot} (temporada ${TEAM.season}, ${TEAM.game}).
 Responde SIEMPRE en el idioma del usuario, de forma clara, técnica y entusiasta, en 1-3 párrafos.
@@ -36,8 +40,6 @@ DATOS DEL ROBOT ${TEAM.robot}:
 - Estrategia: 21 artifacts en autónomo y 27 ciclos en teleop (4-5 s) con "gate recycling".
 - Equipo: FTC ${TEAM.number} de la CDMX. Outreach: +775 personas alcanzadas, +8,000 árboles plantados y la Aztech Alliance (11 equipos mentorizados).`;
 
-const MODEL = "claude-sonnet-4-6";
-
 function textResponse(msg) {
   return new Response(msg, { headers: { "Content-Type": "text/plain; charset=utf-8" } });
 }
@@ -45,10 +47,10 @@ function textResponse(msg) {
 export default async function handler(req) {
   if (req.method !== "POST") return new Response("Method not allowed", { status: 405 });
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     return textResponse(
-      "El asistente AI aún no está configurado. Agrega ANTHROPIC_API_KEY en Vercel para activarlo."
+      "Aztlo aún no está configurado. Agrega GEMINI_API_KEY (gratis, en aistudio.google.com) en Vercel para activarlo."
     );
   }
 
@@ -63,20 +65,25 @@ export default async function handler(req) {
   }
   if (!messages.length) return textResponse("Escríbeme una pregunta sobre el robot. 🤖");
 
-  // Llamada a la API de Anthropic con streaming (SSE).
-  const upstream = await fetch("https://api.anthropic.com/v1/messages", {
+  // Convierte el historial al formato de Gemini (rol "assistant" → "model").
+  const contents = messages.map((m) => ({
+    role: m.role === "assistant" ? "model" : "user",
+    parts: [{ text: m.content }],
+  }));
+
+  const url =
+    "https://generativelanguage.googleapis.com/v1beta/models/" +
+    MODEL +
+    ":streamGenerateContent?alt=sse&key=" +
+    apiKey;
+
+  const upstream = await fetch(url, {
     method: "POST",
-    headers: {
-      "x-api-key": apiKey,
-      "anthropic-version": "2023-06-01",
-      "content-type": "application/json",
-    },
+    headers: { "content-type": "application/json" },
     body: JSON.stringify({
-      model: MODEL,
-      max_tokens: 1024,
-      system: SYSTEM,
-      messages,
-      stream: true,
+      system_instruction: { parts: [{ text: SYSTEM }] },
+      contents,
+      generationConfig: { maxOutputTokens: 1024, temperature: 0.6 },
     }),
   });
 
@@ -86,7 +93,7 @@ export default async function handler(req) {
     );
   }
 
-  // Transformamos el SSE de Anthropic en texto plano (solo los deltas de texto).
+  // Transformamos el SSE de Gemini en texto plano (solo los fragmentos de texto).
   const reader = upstream.body.getReader();
   const decoder = new TextDecoder();
   const encoder = new TextEncoder();
@@ -108,8 +115,9 @@ export default async function handler(req) {
             if (!data || data === "[DONE]") continue;
             try {
               const evt = JSON.parse(data);
-              if (evt.type === "content_block_delta" && evt.delta?.type === "text_delta") {
-                controller.enqueue(encoder.encode(evt.delta.text));
+              const parts = evt?.candidates?.[0]?.content?.parts;
+              if (parts) {
+                for (const p of parts) if (p.text) controller.enqueue(encoder.encode(p.text));
               }
             } catch {
               /* ignora líneas que no sean JSON */

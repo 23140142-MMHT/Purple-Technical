@@ -51,8 +51,8 @@
       "¿Qué tipo de drivetrain usan?": "What kind of drivetrain do you use?",
       "¿Cómo funciona el turret?": "How does the turret work?",
       "¿Cuál es su estrategia autónoma?": "What's your autonomous strategy?",
-      "El asistente AI no está conectado. Despliega la función serverless (api/chat.js) con tu ANTHROPIC_API_KEY para activarlo.":
-        "The AI assistant is not connected. Deploy the serverless function (api/chat.js) with your ANTHROPIC_API_KEY to enable it.",
+      "Aztlo no está disponible ahora mismo. Intenta de nuevo en un momento.":
+        "Aztlo isn't available right now. Please try again in a moment.",
 
       // —— Drivetrain ——
       "Chasis mecanum con transmision de movimiento por poleas y motores Yellow Jacket":
@@ -213,8 +213,8 @@
       "¿Qué tipo de drivetrain usan?": "Quel type de drivetrain utilisez-vous ?",
       "¿Cómo funciona el turret?": "Comment fonctionne la tourelle ?",
       "¿Cuál es su estrategia autónoma?": "Quelle est votre stratégie autonome ?",
-      "El asistente AI no está conectado. Despliega la función serverless (api/chat.js) con tu ANTHROPIC_API_KEY para activarlo.":
-        "L'assistant IA n'est pas connecté. Déploie la fonction serverless (api/chat.js) avec ton ANTHROPIC_API_KEY pour l'activer.",
+      "Aztlo no está disponible ahora mismo. Intenta de nuevo en un momento.":
+        "Aztlo n'est pas disponible pour le moment. Réessaie dans un instant.",
 
       // —— Drivetrain ——
       "Chasis mecanum con transmision de movimiento por poleas y motores Yellow Jacket":
