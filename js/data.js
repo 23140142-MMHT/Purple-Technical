@@ -24,7 +24,7 @@ window.BINDER = {
     //     Ej:  website: "https://aztech17626.com"
     //     Mientras esté vacío "", el footer muestra "(sitio web próximamente)".
     // ══════════════════════════════════════════════════════════════════════
-    website: "",
+    website: "https://aztech-2-17626.vercel.app",
 
     socials: {
       instagram: "https://www.instagram.com/aztech_2_17626/",

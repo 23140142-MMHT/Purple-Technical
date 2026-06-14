@@ -60,9 +60,22 @@
       </a>
       <nav class="nav-links" id="nav-links">
         <a href="#top" data-i18n="Robot">Robot</a>
-        <a href="#contents" data-i18n="Subsistemas">Subsistemas</a>
+        <a href="#sections" data-i18n="Subsistemas">Subsistemas</a>
         <a href="#mexico-vs-niagara" data-i18n="Prototipos">Prototipos</a>
         <a href="#software" data-i18n="Software">Software</a>
+        <!-- Dropdown "Our Pillars": conecta con el sitio principal de Aztech II -->
+        <div class="nav-dd" id="nav-dd">
+          <button type="button" class="nav-dd-btn" id="nav-dd-btn" aria-expanded="false" aria-haspopup="true">
+            Our Pillars
+            <svg class="dd-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+          </button>
+          <div class="nav-dd-menu">
+            <a href="https://aztech-2-17626.vercel.app/index.html">Aztech II</a>
+            <a href="https://aztech-2-17626.vercel.app/first.html">FIRST</a>
+            <a href="https://aztech-2-17626.vercel.app/education.html">Education</a>
+            <a href="https://aztech-2-17626.vercel.app/environment.html">Environment</a>
+          </div>
+        </div>
       </nav>
       <!-- Botón "Conócenos" → abre el sitio web (team.website en data.js) -->
       <a id="nav-website" class="nav-cta" target="_blank" rel="noopener" data-i18n="Conócenos">Conócenos</a>
@@ -89,7 +102,7 @@
         </h1>
         <p id="hero-tagline">Built to ride the surge.</p>
         <div class="hero-cta">
-          <a class="btn btn-accent" href="#contents" data-i18n="Explorar subsistemas">Explorar subsistemas</a>
+          <a class="btn btn-accent" href="#sections" data-i18n="Explorar subsistemas">Explorar subsistemas</a>
           <a class="btn btn-outline" id="hero-yt" href="#" target="_blank" rel="noopener" data-i18n="Ver reveal ▶">Ver reveal ▶</a>
         </div>
       </div>
@@ -99,15 +112,6 @@
         <img src="assets/hero.png" alt="Render de Purple Spike — Aztech II 17626" class="hero-image"
           onerror="this.style.display='none'" />
       </div>
-    </section>
-
-    <!-- ░░░ ÍNDICE "CONTENTS" (lo genera main.js) ░░░ -->
-    <section class="container" id="contents">
-      <div class="contents-head">
-        <h2 data-i18n="Contents">Contents</h2>
-        <span class="index-label">Index</span>
-      </div>
-      <div id="contents-list"></div>
     </section>
 
     <!-- ░░░ SECCIONES (las genera main.js) ░░░ -->
@@ -126,7 +130,7 @@
       <nav class="footer-col">
         <h4 data-i18n="Explorar">Explorar</h4>
         <a href="#top" data-i18n="Robot">Robot</a>
-        <a href="#contents" data-i18n="Subsistemas">Subsistemas</a>
+        <a href="#sections" data-i18n="Subsistemas">Subsistemas</a>
         <a href="#mexico-vs-niagara" data-i18n="Prototipos">Prototipos</a>
         <a href="#software" data-i18n="Software">Software</a>
       </nav>

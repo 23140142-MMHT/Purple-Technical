@@ -143,19 +143,6 @@
   const soft = { ...B.software, number: num() };
   const proto = B.prototyping.map((p) => ({ ...p, number: num() }));
 
-  /* ---- 5) Índice "Contents" ---- */
-  const cat = (label, rows) => `<div class="contents-cat">
-    <h3>${label}</h3>
-    ${rows.map((r) => `<a class="contents-row" href="#${r.id}">
-        <span class="num">${r.number}</span><span class="title">${r.title}</span>
-      </a>`).join("")}
-  </div>`;
-
-  $("contents-list").innerHTML =
-    cat(tr("Mecánico"), mech) +
-    cat(tr("Software"), [soft]) +
-    cat(tr("Prototipos"), proto);
-
   /* ---- 6) Secciones ---- */
   const out = [];
 
@@ -269,4 +256,19 @@
   navLinks.addEventListener("click", (e) => {
     if (e.target.tagName === "A") navLinks.classList.remove("open");
   });
+
+  // Dropdown "Our Pillars" (clic para abrir; hover ya en CSS en escritorio).
+  const navDd = $("nav-dd");
+  const navDdBtn = $("nav-dd-btn");
+  if (navDd && navDdBtn) {
+    navDdBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const open = navDd.classList.toggle("open");
+      navDdBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    document.addEventListener("click", () => {
+      navDd.classList.remove("open");
+      navDdBtn.setAttribute("aria-expanded", "false");
+    });
+  }
 })();

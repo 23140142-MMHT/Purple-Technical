@@ -98,9 +98,34 @@ img { max-width: 100%; display: block; }
 }
 .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
 .brand-text small { color: var(--muted); font-size: 12px; }
-.nav-links { display: flex; gap: 4px; margin-left: auto; }
+.nav-links { display: flex; align-items: center; gap: 4px; margin-left: auto; }
 .nav-links a { padding: 8px 12px; border-radius: 8px; font-size: 14px; color: var(--muted); transition: color .2s; }
 .nav-links a:hover { color: var(--fg); }
+
+/* Dropdown "Our Pillars" (enlaza al sitio principal de Aztech) */
+.nav-dd { position: relative; }
+.nav-dd-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 8px 12px; border-radius: 8px; font-size: 14px;
+  background: none; border: none; color: var(--muted); cursor: pointer;
+  font-family: inherit; transition: color .2s;
+}
+.nav-dd-btn:hover, .nav-dd.open .nav-dd-btn { color: var(--fg); }
+.dd-chev { transition: transform .2s; }
+.nav-dd:hover .dd-chev, .nav-dd.open .dd-chev { transform: rotate(180deg); }
+.nav-dd-menu {
+  position: absolute; top: calc(100% + 8px); right: 0;
+  min-width: 184px; display: flex; flex-direction: column; gap: 2px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 8px;
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .2s, transform .2s, visibility .2s; z-index: 60;
+}
+.nav-dd:hover .nav-dd-menu, .nav-dd.open .nav-dd-menu {
+  opacity: 1; visibility: visible; transform: translateY(0);
+}
+.nav-dd-menu a { padding: 8px 12px; border-radius: 8px; font-size: 14px; color: var(--muted); transition: color .2s, background .2s; }
+.nav-dd-menu a:hover { color: var(--fg); background: color-mix(in srgb, var(--accent) 14%, transparent); }
 .season-badge { border: 1px solid var(--border); color: var(--muted); padding: 4px 12px; border-radius: 999px; font-size: 12px; }
 
 /* Menú de idiomas ES / EN / FR */
@@ -450,7 +475,17 @@ img-comparison-slider img { width: 100%; height: 100%; object-fit: contain; }
   .nav-links.open {
     display: flex; flex-direction: column; position: absolute; top: 64px; right: 16px;
     background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 8px; gap: 2px;
+    min-width: 200px;
   }
+  /* En móvil el dropdown se vuelve un grupo en línea dentro del menú */
+  .nav-dd { width: 100%; }
+  .nav-dd-btn { width: 100%; justify-content: space-between; }
+  .nav-dd-menu {
+    position: static; opacity: 1; visibility: visible; transform: none;
+    min-width: 0; border: none; background: none; padding: 2px 0 2px 12px;
+    display: none;
+  }
+  .nav-dd.open .nav-dd-menu { display: flex; }
 }
 
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; transition: none !important; } }
