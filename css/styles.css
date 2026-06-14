@@ -296,6 +296,66 @@ img { max-width: 100%; display: block; }
   .pv-info { grid-template-columns: 1fr; }
 }
 
+/* ── Galería plegable de prototipos intermedios ("+" entre versiones) ── */
+.proto-gap { margin: 30px 0 4px; text-align: center; }
+.proto-gap > summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px dashed var(--border);
+  background: color-mix(in srgb, var(--surface) 40%, transparent);
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  transition: color .2s, border-color .2s;
+}
+.proto-gap > summary::-webkit-details-marker { display: none; }
+.proto-gap > summary:hover { color: var(--fg); border-color: var(--accent); }
+.proto-gap[open] > summary {
+  border-style: solid;
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  color: var(--fg);
+}
+.proto-gap-plus {
+  display: grid; place-items: center;
+  width: 22px; height: 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff; font-size: 15px; font-weight: 700; line-height: 1;
+}
+.proto-gap-plus::before { content: "+"; }
+.proto-gap[open] .proto-gap-plus::before { content: "\2013"; }
+.proto-gap-count {
+  font-family: monospace; font-size: 12px; color: var(--muted);
+  border: 1px solid var(--border); border-radius: 999px; padding: 1px 8px;
+}
+.proto-gap-grid {
+  margin: 22px auto 0;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  text-align: left;
+}
+.proto-photo { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.proto-photo .media {
+  aspect-ratio: 4 / 3; border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--light); overflow: hidden; position: relative;
+}
+.proto-photo .media img { width: 100%; height: 100%; object-fit: cover; }
+.proto-photo .media .placeholder {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  color: #7a5bb0; font-size: 13px; text-align: center; padding: 16px;
+}
+.proto-photo figcaption {
+  font-family: "Conthrax", "Montserrat", sans-serif;
+  font-size: 13px; font-weight: 600; letter-spacing: .04em;
+  color: var(--accent); text-align: center;
+}
+
 /* Botón de pantalla completa en cada visor 3D */
 .cad-fs {
   position: absolute; top: 10px; right: 10px; z-index: 4;

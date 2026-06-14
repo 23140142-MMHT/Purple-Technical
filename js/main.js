@@ -172,6 +172,26 @@
     return `<div class="sw sw--${cls}"><h4>${title}</h4><ul>${lis}</ul></div>`;
   }
 
+  // Galería plegable de fotos de prototipos intermedios (entre versiones grandes).
+  // Se muestra como un botón "+" centrado; al abrirlo despliega las fotos en cards.
+  // Cada foto: { label, image }. Si falta la imagen, media() deja el recuadro placeholder.
+  function protoGap(photos) {
+    if (!photos || !photos.length) return "";
+    const cards = photos.map((ph) => `
+        <figure class="proto-photo">
+          ${media(ph.image, ph.label || tr("Prototipo"))}
+          ${ph.label ? `<figcaption>${ph.label}</figcaption>` : ""}
+        </figure>`).join("");
+    return `<details class="proto-gap">
+        <summary>
+          <span class="proto-gap-plus" aria-hidden="true"></span>
+          <span>${tr("Prototipos intermedios")}</span>
+          <span class="proto-gap-count">${photos.length}</span>
+        </summary>
+        <div class="proto-gap-grid">${cards}</div>
+      </details>`;
+  }
+
   proto.forEach((p) => {
     // Mismo formato que los mecanismos: CAD a la izquierda, info a la derecha.
     // "Our Robots" + su texto como cabecera que ocupa toda una fila arriba.
@@ -194,7 +214,7 @@
               ${swList(tr("Debilidades"), v.weaknesses, "bad", "✕")}
             </div>
           </div>
-        </section>`;
+        </section>${protoGap(v.progressPhotos)}`;
       }).join("");
       out.push(`<div class="section--proto" id="${p.id}">
         <div class="proto-head-row">

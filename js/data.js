@@ -216,6 +216,11 @@ window.BINDER = {
             "Sin autónomo",
             "Fallas del PLA en componentes de transmisión impresos en 3D: el calor por fricción de los motores comprometía la integridad estructural",
           ],
+          // Foto(s) intermedia(s) entre Cuautitlan y el Mexico Championship.
+          // Sube la imagen a assets/prototyping/ con este nombre (o cambia la ruta).
+          progressPhotos: [
+            { label: "", image: "assets/prototyping/ccm-mexico.jpg" },
+          ],
         },
         {
           label: "V2 | Mexico Championship",
@@ -226,6 +231,13 @@ window.BINDER = {
             "Mayor consistencia e implementación de un controlador PID para regular con precisión la velocidad del shooter",
           ],
           weaknesses: ["Ciclos lentos", "Problemas con las compresiones del intake y el shooter"],
+          // 3 fotos intermedias entre el Mexico Championship y el Niagara Premier Event.
+          // Sin info, solo las etiquetas V1, V2, V3. Sube cada imagen a assets/prototyping/.
+          progressPhotos: [
+            { label: "V1", image: "assets/prototyping/premier-v1.jpg" },
+            { label: "V2", image: "assets/prototyping/premier-v2.jpg" },
+            { label: "V3", image: "assets/prototyping/premier-v3.jpg" },
+          ],
         },
         {
           label: "Versión actual | Niagara Premier Event",

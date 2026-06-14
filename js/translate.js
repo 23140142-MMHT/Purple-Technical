@@ -149,6 +149,8 @@
 
       // —— Prototipos ——
       "Nuestros robots": "Our robots",
+      "Prototipos intermedios": "In-between prototypes",
+      "Prototipo": "Prototype",
       "Las 3 versiones mas importantes de Purple Spike. Gira cada modelo 3D para compararlos.":
         "The 3 most important versions of Purple Spike. Rotate each 3D model to compare them.",
       "Versión actual | Niagara Premier Event": "Current version | Niagara Premier Event",
@@ -314,6 +316,8 @@
 
       // —— Prototipos ——
       "Nuestros robots": "Nos robots",
+      "Prototipos intermedios": "Prototypes intermédiaires",
+      "Prototipo": "Prototype",
       "Las 3 versiones mas importantes de Purple Spike. Gira cada modelo 3D para compararlos.":
         "Les 3 versions les plus importantes de Purple Spike. Tourne chaque modèle 3D pour les comparer.",
       "Versión actual | Niagara Premier Event": "Version actuelle | Niagara Premier Event",
