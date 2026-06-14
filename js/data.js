@@ -219,7 +219,7 @@ window.BINDER = {
           // Foto(s) intermedia(s) entre Cuautitlan y el Mexico Championship.
           // Sube la imagen a assets/prototyping/ con este nombre (o cambia la ruta).
           progressPhotos: [
-            { label: "", image: "assets/prototyping/ccm-mexico.png" },
+            { label: "Mexico City Regional", image: "assets/prototyping/ccm-mexico.png" },
           ],
         },
         {
