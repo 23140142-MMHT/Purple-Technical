@@ -188,7 +188,7 @@
           <span>${tr("Prototipos intermedios")}</span>
           <span class="proto-gap-count">${photos.length}</span>
         </summary>
-        <div class="proto-gap-grid">${cards}</div>
+        <div class="proto-gap-grid${photos.length === 1 ? " proto-gap-grid--single" : ""}">${cards}</div>
       </details>`;
   }
 
