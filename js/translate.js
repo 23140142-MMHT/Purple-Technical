@@ -13,7 +13,7 @@
    La clave es el texto en español EXACTO; el valor es la traducción.
    ════════════════════════════════════════════════════════════════════════ */
 (function () {
-  var lang = localStorage.getItem("lang") || "es";
+  var lang = localStorage.getItem("lang") || "en";
 
   var DICT = {
     en: {
