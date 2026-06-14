@@ -18,6 +18,8 @@
   var DICT = {
     en: {
       // —— UI ——
+      "Hecho con": "Made with",
+      "por Aztech II · FIRST Tech Challenge 17626": "by Aztech II · FIRST Tech Challenge 17626",
       "Conoce a": "Meet",
       "Explorar subsistemas": "Explore subsystems",
       "Explorar": "Explore",
@@ -181,6 +183,8 @@
 
     fr: {
       // —— UI ——
+      "Hecho con": "Fait avec",
+      "por Aztech II · FIRST Tech Challenge 17626": "par Aztech II · FIRST Tech Challenge 17626",
       "Conoce a": "Voici",
       "Explorar subsistemas": "Explorer les sous-systèmes",
       "Explorar": "Explorer",

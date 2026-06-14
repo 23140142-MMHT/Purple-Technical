@@ -25,17 +25,6 @@
   $("hero-yt").href = "https://www.youtube.com/watch?v=" + T.youtubeId;
   document.title = T.name + " — Technical Binder";
 
-  $("footer-team").textContent = T.name;
-  $("footer-desc").textContent =
-    tr("Technical Binder de") + " " + T.robotName + " — " + tr("temporada") + " " +
-    T.season + " (" + T.game + "). " + T.location + ".";
-
-  // Redes del footer
-  const socialMap = { website: "🌐", youtube: "▶", instagram: "📷", github: "‹›" };
-  $("footer-socials").innerHTML = Object.entries(T.socials)
-    .map(([k, url]) => `<a href="${url}" target="_blank" rel="noopener" aria-label="${k}">${socialMap[k] || "↗"}</a>`)
-    .join("");
-
   // Sitio web del equipo (footer). La URL viene de team.website en data.js.
   const webEl = $("footer-website");
   if (webEl) {
@@ -57,8 +46,6 @@
     if (url) navWeb.href = url;
     else navWeb.style.display = "none";
   }
-  $("footer-bottom").textContent =
-    "© " + T.season + " " + T.name + ". " + tr("Hecho con FIRST ♥.");
 
   /* ---- 3) Helpers de render ---- */
   // Imagen con fallback a placeholder si el archivo no existe.
